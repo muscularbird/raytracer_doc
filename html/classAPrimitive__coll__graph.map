@@ -1,0 +1,9 @@
+<map id="APrimitive" name="APrimitive">
+<area shape="rect" id="Node000001" title=" " alt="" coords="104,112,186,139"/>
+<area shape="rect" id="Node000002" href="$classIPrimitive.html" title=" " alt="" coords="5,5,82,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,41,135,110,131,114,64,45"/>
+<area shape="rect" id="Node000003" href="$classMatrix4x4.html" title=" " alt="" coords="106,5,184,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="148,47,148,112,142,112,142,47"/>
+<area shape="rect" id="Node000004" href="$structVec3.html" title=" " alt="" coords="256,5,306,32"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="277,48,268,70,253,90,221,110,187,121,185,116,219,105,250,86,264,67,272,46"/>
+</map>

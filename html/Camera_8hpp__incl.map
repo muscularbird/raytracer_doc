@@ -1,0 +1,21 @@
+<map id="include/Camera.hpp" name="include/Camera.hpp">
+<area shape="rect" id="Node000001" title="camera class" alt="" coords="262,5,399,32"/>
+<area shape="rect" id="Node000002" href="$raytracer_8hpp.html" title=" " alt="" coords="203,80,300,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="318,35,278,71,275,67,315,31"/>
+<area shape="rect" id="Node000008" href="$Vec3_8hpp.html" title="3 dimensions vector class" alt="" coords="414,80,489,107"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="353,30,419,69,416,74,350,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,155,77,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="216,110,93,152,91,147,214,105"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="101,155,154,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="231,110,163,149,161,144,229,105"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="179,155,236,181"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="246,109,225,143,221,140,242,106"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="260,155,328,181"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="261,106,282,140,277,143,257,109"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="352,155,399,181"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="275,105,343,144,340,149,272,110"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="423,155,480,181"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="454,107,454,139,449,139,449,107"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="504,155,572,181"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="468,105,514,143,510,147,465,109"/>
+</map>

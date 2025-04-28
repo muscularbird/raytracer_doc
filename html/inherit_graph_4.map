@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classIPrimitive.html" title=" " alt="" coords="5,31,82,57"/>
+<area shape="rect" id="Node000001" href="$classAPrimitive.html" title=" " alt="" coords="130,31,211,57"/>
+<area shape="poly" id="edge5_Node000000_Node000001" title=" " alt="" coords="97,41,129,41,129,47,97,47"/>
+<area shape="rect" id="Node000002" href="$classPlane.html" title=" " alt="" coords="263,5,317,32"/>
+<area shape="poly" id="edge6_Node000001_Node000002" title=" " alt="" coords="225,30,262,22,263,27,227,35"/>
+<area shape="rect" id="Node000003" href="$classSphere.html" title=" " alt="" coords="259,56,321,83"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="227,53,259,60,258,65,226,58"/>
+</map>

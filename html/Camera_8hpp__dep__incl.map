@@ -1,0 +1,16 @@
+<map id="include/Camera.hpp" name="include/Camera.hpp">
+<area shape="rect" id="Node000001" title="camera class" alt="" coords="204,5,341,32"/>
+<area shape="rect" id="Node000002" href="$parsing_8hpp.html" title="parsing class" alt="" coords="133,80,266,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="251,45,214,82,210,78,247,41"/>
+<area shape="rect" id="Node000007" href="$Camera_8cpp.html" title="camera class constructor and getting functions" alt="" coords="290,80,404,107"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="298,41,336,78,333,82,295,45"/>
+<area shape="rect" id="Node000003" href="$Renderer_8hpp.html" title=" " alt="" coords="18,155,162,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="169,118,111,156,108,152,166,113"/>
+<area shape="rect" id="Node000005" href="$main_8cpp.html" title="main function for the raytracer" alt="" coords="151,229,248,256"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="202,122,202,229,197,229,197,122"/>
+<area shape="rect" id="Node000006" href="$parsing_8cpp.html" title="parsing class definition" alt="" coords="237,155,394,181"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="234,113,296,152,294,156,231,118"/>
+<area shape="rect" id="Node000004" href="$Renderer_8cpp.html" title=" " alt="" coords="5,229,127,256"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="84,197,73,230,68,228,78,196"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="123,188,182,226,179,231,120,193"/>
+</map>

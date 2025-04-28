@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classILights.html" title=" " alt="" coords="5,81,66,108"/>
+<area shape="rect" id="Node000001" href="$classAmbientLight.html" title=" " alt="" coords="124,5,222,32"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="67,70,112,42,136,30,139,35,115,46,70,74"/>
+<area shape="rect" id="Node000002" href="$classDiffuseLight.html" title=" " alt="" coords="128,56,218,83"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="80,84,127,75,128,80,81,89"/>
+<area shape="rect" id="Node000003" href="$classDirectionnalLight.html" title=" " alt="" coords="114,107,232,133"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="81,100,113,106,113,112,80,106"/>
+<area shape="rect" id="Node000004" href="$classPointLight.html" title=" " alt="" coords="133,157,212,184"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="70,115,115,143,139,154,136,159,112,148,67,120"/>
+</map>

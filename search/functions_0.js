@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['getinstance_0',['getInstance',['../classLogger.html#acebb37f5538780e6c14f13de6ec497bc',1,'Logger']]],
-  ['getoutputname_1',['getOutputName',['../classRaytracer_1_1ParsingArgs.html#ada90a64d1439bd4503b31264a69baea5',1,'Raytracer::ParsingArgs']]],
-  ['getscenename_2',['getSceneName',['../classRaytracer_1_1ParsingArgs.html#aa52534cfbf1634d66116a6275f48abb6',1,'Raytracer::ParsingArgs']]]
+  ['ambientlight_0',['AmbientLight',['../classRaytracer_1_1AmbientLight.html#a60b8e2aa42ab04d4d241ed02da6f966a',1,'Raytracer::AmbientLight']]],
+  ['applytopoint_1',['applyToPoint',['../classMath_1_1Matrix4x4.html#aa15754380d6907c35e2f4d7467559601',1,'Math::Matrix4x4']]],
+  ['aprimitive_2',['APrimitive',['../classRaytracer_1_1APrimitive.html#aef70209c7765fced9f1f1b81adb229a6',1,'Raytracer::APrimitive']]]
 ];

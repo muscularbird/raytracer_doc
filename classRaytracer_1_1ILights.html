@@ -87,13 +87,67 @@ Inheritance diagram for Raytracer::ILights:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a39dfcf8435791f3af8f0e4cc34c6b8b6" id="r_a39dfcf8435791f3af8f0e4cc34c6b8b6"><td class="memItemLeft" align="right" valign="top"><a id="a39dfcf8435791f3af8f0e4cc34c6b8b6" name="a39dfcf8435791f3af8f0e4cc34c6b8b6"></a>
-virtual <a class="el" href="structMath_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getDir</b> (const <a class="el" href="structMath_1_1Vec3.html">Vec3</a> &amp;p) const =0</td></tr>
+<tr class="memitem:a39dfcf8435791f3af8f0e4cc34c6b8b6" id="r_a39dfcf8435791f3af8f0e4cc34c6b8b6"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structMath_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1ILights.html#a39dfcf8435791f3af8f0e4cc34c6b8b6">getDir</a> (const <a class="el" href="structMath_1_1Vec3.html">Vec3</a> &amp;p) const =0</td></tr>
 <tr class="separator:a39dfcf8435791f3af8f0e4cc34c6b8b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8879ad53bb316ee3ed4f7c447e0964c7" id="r_a8879ad53bb316ee3ed4f7c447e0964c7"><td class="memItemLeft" align="right" valign="top"><a id="a8879ad53bb316ee3ed4f7c447e0964c7" name="a8879ad53bb316ee3ed4f7c447e0964c7"></a>
-virtual float&#160;</td><td class="memItemRight" valign="bottom"><b>getIntensity</b> () const =0</td></tr>
+<tr class="memitem:a8879ad53bb316ee3ed4f7c447e0964c7" id="r_a8879ad53bb316ee3ed4f7c447e0964c7"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1ILights.html#a8879ad53bb316ee3ed4f7c447e0964c7">getIntensity</a> () const =0</td></tr>
 <tr class="separator:a8879ad53bb316ee3ed4f7c447e0964c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a39dfcf8435791f3af8f0e4cc34c6b8b6" name="a39dfcf8435791f3af8f0e4cc34c6b8b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39dfcf8435791f3af8f0e4cc34c6b8b6">&#9670;&#160;</a></span>getDir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="structMath_1_1Vec3.html">Vec3</a> Raytracer::ILights::getDir </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMath_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classRaytracer_1_1AmbientLight.html#ab1691be1a24c82e30ef0a46bca39284a">Raytracer::AmbientLight</a>, <a class="el" href="classRaytracer_1_1DiffuseLight.html#ab900101d80cdb6d8fc5ce6eb0cf128e8">Raytracer::DiffuseLight</a>, and <a class="el" href="classRaytracer_1_1DirectionnalLight.html#ad659ffc511412d8bdbe9544f58a0b2d9">Raytracer::DirectionnalLight</a>.</p>
+
+</div>
+</div>
+<a id="a8879ad53bb316ee3ed4f7c447e0964c7" name="a8879ad53bb316ee3ed4f7c447e0964c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8879ad53bb316ee3ed4f7c447e0964c7">&#9670;&#160;</a></span>getIntensity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float Raytracer::ILights::getIntensity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classRaytracer_1_1AmbientLight.html#a75bf6d4e4385651bf6287973b9999526">Raytracer::AmbientLight</a>, <a class="el" href="classRaytracer_1_1DiffuseLight.html#a0f2212a46def1773681272c8131626ab">Raytracer::DiffuseLight</a>, and <a class="el" href="classRaytracer_1_1DirectionnalLight.html#ac56ba42b3d6816519fbe440032c8b84f">Raytracer::DirectionnalLight</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/lights/<a class="el" href="ILights_8hpp_source.html">ILights.hpp</a></li>
 </ul>

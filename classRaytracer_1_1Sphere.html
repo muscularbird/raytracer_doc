@@ -92,19 +92,28 @@ Collaboration diagram for Raytracer::Sphere:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a05c60cc8f4cac9949ac739ecd769a39e" id="r_a05c60cc8f4cac9949ac739ecd769a39e"><td class="memItemLeft" align="right" valign="top"><a id="a05c60cc8f4cac9949ac739ecd769a39e" name="a05c60cc8f4cac9949ac739ecd769a39e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Sphere</b> (const <a class="el" href="structRaytracer_1_1Color.html">Color</a> c, <a class="el" href="classMath_1_1Matrix4x4.html">Matrix4x4</a> matrix)</td></tr>
+<tr class="memitem:a05c60cc8f4cac9949ac739ecd769a39e" id="r_a05c60cc8f4cac9949ac739ecd769a39e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1Sphere.html#a05c60cc8f4cac9949ac739ecd769a39e">Sphere</a> (const <a class="el" href="structRaytracer_1_1Color.html">Color</a> c, <a class="el" href="classMath_1_1Matrix4x4.html">Matrix4x4</a> matrix)</td></tr>
+<tr class="memdesc:a05c60cc8f4cac9949ac739ecd769a39e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classRaytracer_1_1Sphere.html">Sphere</a> object with the specified color and transformation matrix.  <br /></td></tr>
 <tr class="separator:a05c60cc8f4cac9949ac739ecd769a39e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ffdf600f84062cbc41a0b2ab555874c" id="r_a0ffdf600f84062cbc41a0b2ab555874c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1Sphere.html#a0ffdf600f84062cbc41a0b2ab555874c">intersectLocal</a> (const <a class="el" href="structMath_1_1Vec3.html">Vec3</a> &amp;rayOrigin, const <a class="el" href="structMath_1_1Vec3.html">Vec3</a> &amp;rayDir, double &amp;t, <a class="el" href="structMath_1_1Vec3.html">Vec3</a> &amp;) const override</td></tr>
+<tr class="memdesc:a0ffdf600f84062cbc41a0b2ab555874c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if a ray intersects with the sphere in local space.  <br /></td></tr>
 <tr class="separator:a0ffdf600f84062cbc41a0b2ab555874c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classRaytracer_1_1APrimitive"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classRaytracer_1_1APrimitive')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classRaytracer_1_1APrimitive.html">Raytracer::APrimitive</a></td></tr>
+<tr class="memitem:aef70209c7765fced9f1f1b81adb229a6 inherit pub_methods_classRaytracer_1_1APrimitive" id="r_aef70209c7765fced9f1f1b81adb229a6"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>APrimitive</b> ()</td></tr>
+<tr class="memdesc:aef70209c7765fced9f1f1b81adb229a6 inherit pub_methods_classRaytracer_1_1APrimitive"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classRaytracer_1_1APrimitive.html#aef70209c7765fced9f1f1b81adb229a6" title="Construct a new APrimitive::APrimitive object.">APrimitive::APrimitive</a> object. <br /></td></tr>
+<tr class="separator:aef70209c7765fced9f1f1b81adb229a6 inherit pub_methods_classRaytracer_1_1APrimitive"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aceaf72ee0563e71b688430a406be4d0b inherit pub_methods_classRaytracer_1_1APrimitive" id="r_aceaf72ee0563e71b688430a406be4d0b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1APrimitive.html#aceaf72ee0563e71b688430a406be4d0b">intersect</a> (const <a class="el" href="structMath_1_1Vec3.html">Vec3</a> &amp;rayOrigin, const <a class="el" href="structMath_1_1Vec3.html">Vec3</a> &amp;rayDir, double &amp;t, <a class="el" href="structMath_1_1Vec3.html">Vec3</a> &amp;normal) const override</td></tr>
+<tr class="memdesc:aceaf72ee0563e71b688430a406be4d0b inherit pub_methods_classRaytracer_1_1APrimitive"><td class="mdescLeft">&#160;</td><td class="mdescRight">call the intersect local of the corresponding primitives  <br /></td></tr>
 <tr class="separator:aceaf72ee0563e71b688430a406be4d0b inherit pub_methods_classRaytracer_1_1APrimitive"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f54992bdd674ac97c8369e2458637bf inherit pub_methods_classRaytracer_1_1APrimitive" id="r_a1f54992bdd674ac97c8369e2458637bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1APrimitive.html#a1f54992bdd674ac97c8369e2458637bf">setTransform</a> (const <a class="el" href="classMath_1_1Matrix4x4.html">Matrix4x4</a> &amp;mat) override</td></tr>
+<tr class="memdesc:a1f54992bdd674ac97c8369e2458637bf inherit pub_methods_classRaytracer_1_1APrimitive"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the transform variable  <br /></td></tr>
 <tr class="separator:a1f54992bdd674ac97c8369e2458637bf inherit pub_methods_classRaytracer_1_1APrimitive"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29e7dcb7baa1f4abe7423d6ceb90e949 inherit pub_methods_classRaytracer_1_1APrimitive" id="r_a29e7dcb7baa1f4abe7423d6ceb90e949"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classMath_1_1Matrix4x4.html">Matrix4x4</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1APrimitive.html#a29e7dcb7baa1f4abe7423d6ceb90e949">getTransform</a> () const override</td></tr>
+<tr class="memdesc:a29e7dcb7baa1f4abe7423d6ceb90e949 inherit pub_methods_classRaytracer_1_1APrimitive"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the transformation  <br /></td></tr>
 <tr class="separator:a29e7dcb7baa1f4abe7423d6ceb90e949 inherit pub_methods_classRaytracer_1_1APrimitive"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1755d864b6373dcde3e6f74ae8f730a inherit pub_methods_classRaytracer_1_1APrimitive" id="r_ad1755d864b6373dcde3e6f74ae8f730a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMath_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1APrimitive.html#ad1755d864b6373dcde3e6f74ae8f730a">getColor</a> () const override</td></tr>
+<tr class="memdesc:ad1755d864b6373dcde3e6f74ae8f730a inherit pub_methods_classRaytracer_1_1APrimitive"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the color of the object  <br /></td></tr>
 <tr class="separator:ad1755d864b6373dcde3e6f74ae8f730a inherit pub_methods_classRaytracer_1_1APrimitive"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b466456879992723cab5af030c54b3e inherit pub_methods_classRaytracer_1_1APrimitive" id="r_a3b466456879992723cab5af030c54b3e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1APrimitive.html#a3b466456879992723cab5af030c54b3e">getM</a> () const override</td></tr>
 <tr class="separator:a3b466456879992723cab5af030c54b3e inherit pub_methods_classRaytracer_1_1APrimitive"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,6 +139,46 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>metal</b> = 0.0f</td
 float&#160;</td><td class="memItemRight" valign="bottom"><b>transparence</b> = 0.0f</td></tr>
 <tr class="separator:a2eb26b6259ce5ec2783d9041758f215b inherit pro_attribs_classRaytracer_1_1APrimitive"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a05c60cc8f4cac9949ac739ecd769a39e" name="a05c60cc8f4cac9949ac739ecd769a39e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05c60cc8f4cac9949ac739ecd769a39e">&#9670;&#160;</a></span>Sphere()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sphere::Sphere </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structRaytracer_1_1Color.html">Color</a>&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classMath_1_1Matrix4x4.html">Matrix4x4</a>&#160;</td>
+          <td class="paramname"><em>matrix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a <a class="el" href="classRaytracer_1_1Sphere.html">Sphere</a> object with the specified color and transformation matrix. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>The color of the cylinder, including its RGB values, metallic property, and transparency. </td></tr>
+    <tr><td class="paramname">matrix</td><td>A 4x4 transformation matrix used to define the cylinder's position, orientation, radius, and height.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The constructor initializes the properties:</p>
+<p>Additionally, the transformation matrix is applied to the cylinder using the <code>setTransform</code> method. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0ffdf600f84062cbc41a0b2ab555874c" name="a0ffdf600f84062cbc41a0b2ab555874c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ffdf600f84062cbc41a0b2ab555874c">&#9670;&#160;</a></span>intersectLocal()</h2>
@@ -144,13 +193,13 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>transparence</b> = 0
           <td class="memname">bool Sphere::intersectLocal </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structMath_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rayOrigin</em>, </td>
+          <td class="paramname"><em>origin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="structMath_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rayDir</em>, </td>
+          <td class="paramname"><em>dir</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -176,6 +225,21 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>transparence</b> = 0
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Determines if a ray intersects with the sphere in local space. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">origin</td><td>The origin of the ray in local coordinates. </td></tr>
+    <tr><td class="paramname">dir</td><td>The direction of the ray in local coordinates (assumed to be normalized). </td></tr>
+    <tr><td class="paramname">t</td><td>Output parameter that will hold the distance from the ray origin to the intersection point, if an intersection occurs. </td></tr>
+    <tr><td class="paramname">n</td><td>Output parameter that will hold the normal vector at the intersection point, if an intersection occurs. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true If the ray intersects the sphere. </dd>
+<dd>
+false If the ray does not intersect the sphere.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The function assumes that the ray direction is normalized. The intersection distance <code>t</code> is only considered valid if it is greater than a small threshold (0.001) to avoid self-intersection. </dd></dl>
 
 <p>Implements <a class="el" href="classRaytracer_1_1IPrimitive.html">Raytracer::IPrimitive</a>.</p>
 

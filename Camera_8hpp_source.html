@@ -95,23 +95,29 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <a class="code hl_class" href="classRaytracer_1_1Camera.html">Camera</a>(std::pair&lt;int, int&gt; resolution, <a class="code hl_struct" href="structMath_1_1Vec3.html">Vec3</a> position,</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>                <a class="code hl_struct" href="structMath_1_1Vec3.html">Vec3</a> rotation, <span class="keywordtype">float</span> fieldOfView);</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <a class="code hl_class" href="classRaytracer_1_1Camera.html">~Camera</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            std::pair&lt;int, int&gt; getRes() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <a class="code hl_struct" href="structMath_1_1Vec3.html">Vec3</a> getPosition() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <a class="code hl_struct" href="structMath_1_1Vec3.html">Vec3</a> getRotation() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keywordtype">float</span> getFieldOfView() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            std::pair&lt;int, int&gt; _resolution = {1920, 1080};</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <a class="code hl_struct" href="structMath_1_1Vec3.html">Vec3</a> _position;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <a class="code hl_struct" href="structMath_1_1Vec3.html">Vec3</a> _rotation;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keywordtype">float</span> _fieldOfView;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    };</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            std::pair&lt;int, int&gt; <a class="code hl_function" href="classRaytracer_1_1Camera.html#a594624435c35904b671b8cfdd1f7e27a">getRes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <a class="code hl_struct" href="structMath_1_1Vec3.html">Vec3</a> <a class="code hl_function" href="classRaytracer_1_1Camera.html#a55cef82239b506b2a8d43547ec99c2ce">getPosition</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <a class="code hl_struct" href="structMath_1_1Vec3.html">Vec3</a> <a class="code hl_function" href="classRaytracer_1_1Camera.html#a86775cccf7cb4f11a13620ca831fb3e1">getRotation</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classRaytracer_1_1Camera.html#ab56b547f9547630bbf170ece1abd6114">setPosition</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structMath_1_1Vec3.html">Vec3</a>&amp; position);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <span class="keywordtype">float</span> <a class="code hl_function" href="classRaytracer_1_1Camera.html#a70caed1f5bd34e1dc90ba701f6ecdc52">getFieldOfView</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            std::pair&lt;int, int&gt; _resolution = {1920, 1080};</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <a class="code hl_struct" href="structMath_1_1Vec3.html">Vec3</a> _position;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <a class="code hl_struct" href="structMath_1_1Vec3.html">Vec3</a> _rotation;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <span class="keywordtype">float</span> _fieldOfView;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    };</div>
 </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif </span><span class="comment">/* !CAMERA_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif </span><span class="comment">/* !CAMERA_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aVec3_8hpp_html"><div class="ttname"><a href="Vec3_8hpp.html">Vec3.hpp</a></div><div class="ttdoc">3 dimensions vector class</div></div>
 <div class="ttc" id="aclassRaytracer_1_1Camera_html"><div class="ttname"><a href="classRaytracer_1_1Camera.html">Raytracer::Camera</a></div><div class="ttdef"><b>Definition</b> Camera.hpp:18</div></div>
+<div class="ttc" id="aclassRaytracer_1_1Camera_html_a55cef82239b506b2a8d43547ec99c2ce"><div class="ttname"><a href="classRaytracer_1_1Camera.html#a55cef82239b506b2a8d43547ec99c2ce">Raytracer::Camera::getPosition</a></div><div class="ttdeci">Vec3 getPosition() const</div><div class="ttdoc">get the position of the camera</div><div class="ttdef"><b>Definition</b> Camera.cpp:51</div></div>
+<div class="ttc" id="aclassRaytracer_1_1Camera_html_a594624435c35904b671b8cfdd1f7e27a"><div class="ttname"><a href="classRaytracer_1_1Camera.html#a594624435c35904b671b8cfdd1f7e27a">Raytracer::Camera::getRes</a></div><div class="ttdeci">std::pair&lt; int, int &gt; getRes() const</div><div class="ttdoc">get the resolution of the camera</div><div class="ttdef"><b>Definition</b> Camera.cpp:33</div></div>
+<div class="ttc" id="aclassRaytracer_1_1Camera_html_a70caed1f5bd34e1dc90ba701f6ecdc52"><div class="ttname"><a href="classRaytracer_1_1Camera.html#a70caed1f5bd34e1dc90ba701f6ecdc52">Raytracer::Camera::getFieldOfView</a></div><div class="ttdeci">float getFieldOfView() const</div><div class="ttdoc">get the FOV of the camera</div><div class="ttdef"><b>Definition</b> Camera.cpp:70</div></div>
+<div class="ttc" id="aclassRaytracer_1_1Camera_html_a86775cccf7cb4f11a13620ca831fb3e1"><div class="ttname"><a href="classRaytracer_1_1Camera.html#a86775cccf7cb4f11a13620ca831fb3e1">Raytracer::Camera::getRotation</a></div><div class="ttdeci">Vec3 getRotation() const</div><div class="ttdoc">get the rotation of the camera</div><div class="ttdef"><b>Definition</b> Camera.cpp:61</div></div>
+<div class="ttc" id="aclassRaytracer_1_1Camera_html_ab56b547f9547630bbf170ece1abd6114"><div class="ttname"><a href="classRaytracer_1_1Camera.html#ab56b547f9547630bbf170ece1abd6114">Raytracer::Camera::setPosition</a></div><div class="ttdeci">void setPosition(const Vec3 &amp;position)</div><div class="ttdoc">set the position of the camera</div><div class="ttdef"><b>Definition</b> Camera.cpp:42</div></div>
 <div class="ttc" id="astructMath_1_1Vec3_html"><div class="ttname"><a href="structMath_1_1Vec3.html">Math::Vec3</a></div><div class="ttdef"><b>Definition</b> Vec3.hpp:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

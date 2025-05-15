@@ -92,14 +92,43 @@ Collaboration diagram for Raytracer::DiffuseLight:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0731bc4d5468c87d36c9fd85a38b77bc" id="r_a0731bc4d5468c87d36c9fd85a38b77bc"><td class="memItemLeft" align="right" valign="top"><a id="a0731bc4d5468c87d36c9fd85a38b77bc" name="a0731bc4d5468c87d36c9fd85a38b77bc"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>DiffuseLight</b> (const float &amp;intensity)</td></tr>
+<tr class="memitem:a0731bc4d5468c87d36c9fd85a38b77bc" id="r_a0731bc4d5468c87d36c9fd85a38b77bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1DiffuseLight.html#a0731bc4d5468c87d36c9fd85a38b77bc">DiffuseLight</a> (const float &amp;intensity)</td></tr>
+<tr class="memdesc:a0731bc4d5468c87d36c9fd85a38b77bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Diffuse <a class="el" href="structRaytracer_1_1Light.html">Light</a>:: Diffuse <a class="el" href="structRaytracer_1_1Light.html">Light</a> object.  <br /></td></tr>
 <tr class="separator:a0731bc4d5468c87d36c9fd85a38b77bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab900101d80cdb6d8fc5ce6eb0cf128e8" id="r_ab900101d80cdb6d8fc5ce6eb0cf128e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMath_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1DiffuseLight.html#ab900101d80cdb6d8fc5ce6eb0cf128e8">getDir</a> (const <a class="el" href="structMath_1_1Vec3.html">Vec3</a> &amp;p) const override</td></tr>
+<tr class="memdesc:ab900101d80cdb6d8fc5ce6eb0cf128e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the direction of the light  <br /></td></tr>
 <tr class="separator:ab900101d80cdb6d8fc5ce6eb0cf128e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f2212a46def1773681272c8131626ab" id="r_a0f2212a46def1773681272c8131626ab"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1DiffuseLight.html#a0f2212a46def1773681272c8131626ab">getIntensity</a> () const override</td></tr>
+<tr class="memdesc:a0f2212a46def1773681272c8131626ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the intensity of the light  <br /></td></tr>
 <tr class="separator:a0f2212a46def1773681272c8131626ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a0731bc4d5468c87d36c9fd85a38b77bc" name="a0731bc4d5468c87d36c9fd85a38b77bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0731bc4d5468c87d36c9fd85a38b77bc">&#9670;&#160;</a></span>DiffuseLight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Raytracer::DiffuseLight::DiffuseLight </td>
+          <td>(</td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new Diffuse <a class="el" href="structRaytracer_1_1Light.html">Light</a>:: Diffuse <a class="el" href="structRaytracer_1_1Light.html">Light</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab900101d80cdb6d8fc5ce6eb0cf128e8" name="ab900101d80cdb6d8fc5ce6eb0cf128e8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab900101d80cdb6d8fc5ce6eb0cf128e8">&#9670;&#160;</a></span>getDir()</h2>
@@ -124,6 +153,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>get the direction of the light </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structVec3.html">Vec3</a> </dd></dl>
 
 <p>Implements <a class="el" href="classRaytracer_1_1ILights.html">Raytracer::ILights</a>.</p>
 
@@ -151,6 +183,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>get the intensity of the light </p>
+<dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
 
 <p>Implements <a class="el" href="classRaytracer_1_1ILights.html">Raytracer::ILights</a>.</p>
 

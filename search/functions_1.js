@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['imagegenerator_0',['imageGenerator',['../classRaytracer_1_1imageGenerator.html#a20d7c2297d2caa83d117b13edd95874a',1,'Raytracer::imageGenerator']]],
-  ['isgraphical_1',['isGraphical',['../classRaytracer_1_1ParsingArgs.html#a5b8ef5e652f6e46e6111f060b4396e83',1,'Raytracer::ParsingArgs']]]
+  ['camera_0',['Camera',['../classRaytracer_1_1Camera.html#a92cab6f1aae4e6f6a87d9c838b0ef3cb',1,'Raytracer::Camera']]],
+  ['cone_1',['Cone',['../classRaytracer_1_1Cone.html#ada6c1826bdd51cd5af7faf0b3add3e75',1,'Raytracer::Cone']]],
+  ['cylinders_2',['Cylinders',['../classRaytracer_1_1Cylinders.html#a0b611706c32a63f19d5a0e7997051659',1,'Raytracer::Cylinders']]]
 ];

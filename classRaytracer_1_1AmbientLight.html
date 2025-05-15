@@ -92,14 +92,43 @@ Collaboration diagram for Raytracer::AmbientLight:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a60b8e2aa42ab04d4d241ed02da6f966a" id="r_a60b8e2aa42ab04d4d241ed02da6f966a"><td class="memItemLeft" align="right" valign="top"><a id="a60b8e2aa42ab04d4d241ed02da6f966a" name="a60b8e2aa42ab04d4d241ed02da6f966a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>AmbientLight</b> (const float &amp;intensity)</td></tr>
+<tr class="memitem:a60b8e2aa42ab04d4d241ed02da6f966a" id="r_a60b8e2aa42ab04d4d241ed02da6f966a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1AmbientLight.html#a60b8e2aa42ab04d4d241ed02da6f966a">AmbientLight</a> (const float &amp;intensity)</td></tr>
+<tr class="memdesc:a60b8e2aa42ab04d4d241ed02da6f966a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Ambient <a class="el" href="structRaytracer_1_1Light.html">Light</a>:: Ambient <a class="el" href="structRaytracer_1_1Light.html">Light</a> object.  <br /></td></tr>
 <tr class="separator:a60b8e2aa42ab04d4d241ed02da6f966a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1691be1a24c82e30ef0a46bca39284a" id="r_ab1691be1a24c82e30ef0a46bca39284a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMath_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1AmbientLight.html#ab1691be1a24c82e30ef0a46bca39284a">getDir</a> (const <a class="el" href="structMath_1_1Vec3.html">Vec3</a> &amp;) const override</td></tr>
+<tr class="memdesc:ab1691be1a24c82e30ef0a46bca39284a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de recuperer la direction de la lumiere.  <br /></td></tr>
 <tr class="separator:ab1691be1a24c82e30ef0a46bca39284a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75bf6d4e4385651bf6287973b9999526" id="r_a75bf6d4e4385651bf6287973b9999526"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1AmbientLight.html#a75bf6d4e4385651bf6287973b9999526">getIntensity</a> () const override</td></tr>
+<tr class="memdesc:a75bf6d4e4385651bf6287973b9999526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recupere l'intensite de la lumiere.  <br /></td></tr>
 <tr class="separator:a75bf6d4e4385651bf6287973b9999526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a60b8e2aa42ab04d4d241ed02da6f966a" name="a60b8e2aa42ab04d4d241ed02da6f966a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60b8e2aa42ab04d4d241ed02da6f966a">&#9670;&#160;</a></span>AmbientLight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Raytracer::AmbientLight::AmbientLight </td>
+          <td>(</td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>inten</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new Ambient <a class="el" href="structRaytracer_1_1Light.html">Light</a>:: Ambient <a class="el" href="structRaytracer_1_1Light.html">Light</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inten</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab1691be1a24c82e30ef0a46bca39284a" name="ab1691be1a24c82e30ef0a46bca39284a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab1691be1a24c82e30ef0a46bca39284a">&#9670;&#160;</a></span>getDir()</h2>
@@ -124,6 +153,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Permet de recuperer la direction de la lumiere. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structVec3.html">Vec3</a> </dd></dl>
 
 <p>Implements <a class="el" href="classRaytracer_1_1ILights.html">Raytracer::ILights</a>.</p>
 
@@ -151,6 +183,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Recupere l'intensite de la lumiere. </p>
+<dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
 
 <p>Implements <a class="el" href="classRaytracer_1_1ILights.html">Raytracer::ILights</a>.</p>
 

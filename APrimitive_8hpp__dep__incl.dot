@@ -23,12 +23,18 @@ digraph "include/primitives/APrimitive.hpp"
   Node1 -> Node9 [id="edge9_Node000001_Node000009",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node9 [id="Node000009",label="include/primitives\l/Cylinders.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$Cylinders_8hpp.html",tooltip="Cylinders class."];
   Node9 -> Node3 [id="edge10_Node000009_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node1 -> Node10 [id="edge11_Node000001_Node000010",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node10 [id="Node000010",label="include/primitives\l/Plane.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$Plane_8hpp.html",tooltip="plane class"];
-  Node10 -> Node3 [id="edge12_Node000010_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node1 -> Node11 [id="edge13_Node000001_Node000011",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node11 [id="Node000011",label="include/primitives\l/Sphere.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$Sphere_8hpp.html",tooltip="sphere class"];
-  Node11 -> Node3 [id="edge14_Node000011_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node11 -> Node12 [id="edge15_Node000011_Node000012",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node12 [id="Node000012",label="src/primitives/Sphere.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$Sphere_8cpp.html",tooltip="sphere class definition"];
+  Node9 -> Node10 [id="edge11_Node000009_Node000010",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="src/primitives/Cylinders.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$Cylinders_8cpp.html",tooltip=" "];
+  Node1 -> Node11 [id="edge12_Node000001_Node000011",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="include/primitives\l/Plane.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$Plane_8hpp.html",tooltip="plane class"];
+  Node11 -> Node3 [id="edge13_Node000011_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node11 -> Node12 [id="edge14_Node000011_Node000012",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="src/primitives/Plane.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$Plane_8cpp.html",tooltip=" "];
+  Node1 -> Node13 [id="edge15_Node000001_Node000013",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="include/primitives\l/Sphere.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$Sphere_8hpp.html",tooltip="sphere class"];
+  Node13 -> Node3 [id="edge16_Node000013_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node13 -> Node14 [id="edge17_Node000013_Node000014",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="src/primitives/Sphere.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$Sphere_8cpp.html",tooltip="sphere class definition"];
+  Node1 -> Node15 [id="edge18_Node000001_Node000015",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node15 [id="Node000015",label="src/primitives/APrimitive.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$APrimitive_8cpp.html",tooltip=" "];
 }

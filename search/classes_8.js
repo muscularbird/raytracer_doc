@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['sphere_0',['sphere',['../classRaytracer_1_1Sphere.html',1,'Raytracer::Sphere'],['../structSphere.html',1,'Sphere']]]
+  ['ray_0',['Ray',['../structMath_1_1Ray.html',1,'Math']]],
+  ['renderer_1',['Renderer',['../classRaytracer_1_1Renderer.html',1,'Raytracer']]],
+  ['renderingargs_2',['RenderingArgs',['../structRaytracer_1_1RenderingArgs.html',1,'Raytracer']]]
 ];

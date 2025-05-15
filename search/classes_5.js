@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['mat4_0',['Mat4',['../structMat4.html',1,'']]],
-  ['matrix4x4_1',['Matrix4x4',['../classMath_1_1Matrix4x4.html',1,'Math']]]
+  ['light_0',['Light',['../structRaytracer_1_1Light.html',1,'Raytracer']]],
+  ['logger_1',['Logger',['../classLogger.html',1,'']]]
 ];

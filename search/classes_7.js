@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['ray_0',['Ray',['../structMath_1_1Ray.html',1,'Math']]],
-  ['renderer_1',['Renderer',['../classRaytracer_1_1Renderer.html',1,'Raytracer']]],
-  ['renderingargs_2',['RenderingArgs',['../structRaytracer_1_1RenderingArgs.html',1,'Raytracer']]]
+  ['parsing_0',['Parsing',['../classRaytracer_1_1Parsing.html',1,'Raytracer']]],
+  ['parsingargs_1',['ParsingArgs',['../classRaytracer_1_1ParsingArgs.html',1,'Raytracer']]],
+  ['plane_2',['plane',['../structPlane.html',1,'Plane'],['../classRaytracer_1_1Plane.html',1,'Raytracer::Plane']]],
+  ['pointlight_3',['PointLight',['../classRaytracer_1_1PointLight.html',1,'Raytracer']]]
 ];

@@ -79,7 +79,7 @@ Description</h1>
 <p>This project supports the following features:</p>
 <ul>
 <li>Rendering of 3D objects with realistic lighting and shading.</li>
-<li>Support for multiple object types such as spheres, planes, and cubes.</li>
+<li>Support for multiple object types such as spheres, planes ...</li>
 <li>Configurable materials, including reflective and transparent surfaces.</li>
 <li>Dynamic scene configuration through external files.</li>
 </ul>
@@ -92,13 +92,17 @@ Requirements</h1>
 </ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Usage</h1>
+<p><b>Flags optionnel</b> -g -&gt; Active le mode graphique avec la librairie SFML -q INT -&gt; Permet de choisir la qualité du rendu (nombre de rayon envoyer par pixel) -s STRING -&gt; Permet de choisir le format de sortie de l'image (marche seulement en mode graphique), format autoriser PNG, JPEG, BMP, TGA, PPM -o STRING -&gt; Permet de choisir le nom de l'image générer</p>
 <div class="fragment"><div class="line">make</div>
-<div class="line">./raytracer FILE.cfg</div>
+<div class="line">./raytracer -f FILE.cfg</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
+Log</h1>
+<p>Un fichier de log est généré pendant l'exécution, permettant de suivre toutes les activités et événements qui se produisent. Ce fichier de log remonte également les erreurs rencontrées, offrant ainsi un enregistrement complet pour le débogage et le suivi du fonctionnement du programme.</p>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Documentation</h1>
 <p>Une documentation du projet est disponible</p>
 <p><b>Documentation</b> <a href="https://muscularbird.github.io/raytracer_doc/index.html">https://muscularbird.github.io/raytracer_doc/index.html</a></p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Design patterns</h1>
 <ol type="1">
 <li>Factory Pattern Où : Dans la méthode Parsing::parsePrimitives() et Parsing::parseLights(). Explication : Ont utilise des appels comme std::make_shared&lt;Sphere&gt; ou std::make_shared&lt;Plane&gt; pour créer des objets de primitives ou de lumières. Cela correspond à une implémentation simple du pattern Factory, où la création d'objets est centralisée et abstraite.</li>
@@ -106,7 +110,7 @@ Design patterns</h1>
 <li>Observer Pattern Où : Dans la classe <a class="el" href="classLogger.html" title="A singleton class for logging messages with different log levels.">Logger</a>. Explication : Le <a class="el" href="classLogger.html" title="A singleton class for logging messages with different log levels.">Logger</a> agit comme un observateur qui enregistre les événements ou messages générés par d'autres parties du système (comme Parsing ou Renderer). Cela correspond au pattern Observer, où un objet est notifié des changements ou événements dans d'autres objets.</li>
 <li>State Pattern Où : Potentiellement dans la gestion des états de rendu ou des transformations. Explication : Si le système de rendu ou les objets (comme <a class="el" href="structPlane.html">Plane</a> ou <a class="el" href="structSphere.html">Sphere</a>) changent de comportement en fonction de leur état (par exemple, transformations appliquées via Matrix4x4), cela peut être vu comme une utilisation du pattern State.</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h1><a class="anchor" id="autotoc_md7"></a>
 Collaboration</h1>
 <p>This project was developed by:</p>
 <ul>

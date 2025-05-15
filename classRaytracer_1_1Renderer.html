@@ -85,25 +85,212 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abf3de16ba1b4b940cd9f8ac28bc53e27" id="r_abf3de16ba1b4b940cd9f8ac28bc53e27"><td class="memItemLeft" align="right" valign="top"><a id="abf3de16ba1b4b940cd9f8ac28bc53e27" name="abf3de16ba1b4b940cd9f8ac28bc53e27"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Renderer</b> (const <a class="el" href="classRaytracer_1_1Parsing.html">Parsing</a> &amp;p)</td></tr>
 <tr class="separator:abf3de16ba1b4b940cd9f8ac28bc53e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58e43251ffb48b4e40d270994df1e862" id="r_a58e43251ffb48b4e40d270994df1e862"><td class="memItemLeft" align="right" valign="top"><a id="a58e43251ffb48b4e40d270994df1e862" name="a58e43251ffb48b4e40d270994df1e862"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> (<a class="el" href="structRaytracer_1_1RenderingArgs.html">RenderingArgs</a> &amp;args)</td></tr>
+<tr class="memitem:a58e43251ffb48b4e40d270994df1e862" id="r_a58e43251ffb48b4e40d270994df1e862"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1Renderer.html#a58e43251ffb48b4e40d270994df1e862">render</a> (<a class="el" href="structRaytracer_1_1RenderingArgs.html">RenderingArgs</a> &amp;args)</td></tr>
+<tr class="memdesc:a58e43251ffb48b4e40d270994df1e862"><td class="mdescLeft">&#160;</td><td class="mdescRight">do all the calculations for the rendering, shadow rays, reflections, refractions ...  <br /></td></tr>
 <tr class="separator:a58e43251ffb48b4e40d270994df1e862"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a9cff2d4911831dee805e0d15746e04" id="r_a4a9cff2d4911831dee805e0d15746e04"><td class="memItemLeft" align="right" valign="top"><a id="a4a9cff2d4911831dee805e0d15746e04" name="a4a9cff2d4911831dee805e0d15746e04"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GUI_render</b> (<a class="el" href="classRaytracer_1_1ParsingArgs.html">ParsingArgs</a> &amp;args)</td></tr>
+<tr class="memitem:a4a9cff2d4911831dee805e0d15746e04" id="r_a4a9cff2d4911831dee805e0d15746e04"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1Renderer.html#a4a9cff2d4911831dee805e0d15746e04">GUI_render</a> (<a class="el" href="classRaytracer_1_1ParsingArgs.html">ParsingArgs</a> &amp;args)</td></tr>
+<tr class="memdesc:a4a9cff2d4911831dee805e0d15746e04"><td class="mdescLeft">&#160;</td><td class="mdescRight">create the window and start the graphical interface  <br /></td></tr>
 <tr class="separator:a4a9cff2d4911831dee805e0d15746e04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1414ca1a5a0fb30730ec9740c7926f7c" id="r_a1414ca1a5a0fb30730ec9740c7926f7c"><td class="memItemLeft" align="right" valign="top"><a id="a1414ca1a5a0fb30730ec9740c7926f7c" name="a1414ca1a5a0fb30730ec9740c7926f7c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setGUI</b> (bool b)</td></tr>
 <tr class="separator:a1414ca1a5a0fb30730ec9740c7926f7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6980835b58a84374a4b3c40673034eea" id="r_a6980835b58a84374a4b3c40673034eea"><td class="memItemLeft" align="right" valign="top"><a id="a6980835b58a84374a4b3c40673034eea" name="a6980835b58a84374a4b3c40673034eea"></a>
-<a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><b>reflectanceMetallic</b> (const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;incidentRay, const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;normal, const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;color, float metallic)</td></tr>
+<tr class="memitem:a6980835b58a84374a4b3c40673034eea" id="r_a6980835b58a84374a4b3c40673034eea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1Renderer.html#a6980835b58a84374a4b3c40673034eea">reflectanceMetallic</a> (const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;incidentRay, const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;normal, const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;color, float metallic)</td></tr>
+<tr class="memdesc:a6980835b58a84374a4b3c40673034eea"><td class="mdescLeft">&#160;</td><td class="mdescRight">do some calculations to get the color of the pixel when it's metallic  <br /></td></tr>
 <tr class="separator:a6980835b58a84374a4b3c40673034eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6518597a41c074a64e56e31cc6547ea1" id="r_a6518597a41c074a64e56e31cc6547ea1"><td class="memItemLeft" align="right" valign="top"><a id="a6518597a41c074a64e56e31cc6547ea1" name="a6518597a41c074a64e56e31cc6547ea1"></a>
-<a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><b>refractRay</b> (const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;incidentRay, const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;normal, float refractiveIndex, float transparency)</td></tr>
+<tr class="memitem:a6518597a41c074a64e56e31cc6547ea1" id="r_a6518597a41c074a64e56e31cc6547ea1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1Renderer.html#a6518597a41c074a64e56e31cc6547ea1">refractRay</a> (const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;incidentRay, const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;normal, float refractiveIndex, float transparency)</td></tr>
+<tr class="memdesc:a6518597a41c074a64e56e31cc6547ea1"><td class="mdescLeft">&#160;</td><td class="mdescRight">do some calculations to get the color of the pixel when it's transparent  <br /></td></tr>
 <tr class="separator:a6518597a41c074a64e56e31cc6547ea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c5c82741ce78f22ede4adfd53bd07ea" id="r_a8c5c82741ce78f22ede4adfd53bd07ea"><td class="memItemLeft" align="right" valign="top"><a id="a8c5c82741ce78f22ede4adfd53bd07ea" name="a8c5c82741ce78f22ede4adfd53bd07ea"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setThreads</b> (<a class="el" href="classRaytracer_1_1ParsingArgs.html">ParsingArgs</a> &amp;args)</td></tr>
+<tr class="memitem:a8c5c82741ce78f22ede4adfd53bd07ea" id="r_a8c5c82741ce78f22ede4adfd53bd07ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRaytracer_1_1Renderer.html#a8c5c82741ce78f22ede4adfd53bd07ea">setThreads</a> (<a class="el" href="classRaytracer_1_1ParsingArgs.html">ParsingArgs</a> &amp;args)</td></tr>
+<tr class="memdesc:a8c5c82741ce78f22ede4adfd53bd07ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize the threads for rendering  <br /></td></tr>
 <tr class="separator:a8c5c82741ce78f22ede4adfd53bd07ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4a9cff2d4911831dee805e0d15746e04" name="a4a9cff2d4911831dee805e0d15746e04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a9cff2d4911831dee805e0d15746e04">&#9670;&#160;</a></span>GUI_render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Raytracer::Renderer::GUI_render </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classRaytracer_1_1ParsingArgs.html">ParsingArgs</a> &amp;&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>create the window and start the graphical interface </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+</div>
+</div>
+<a id="a6980835b58a84374a4b3c40673034eea" name="a6980835b58a84374a4b3c40673034eea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6980835b58a84374a4b3c40673034eea">&#9670;&#160;</a></span>reflectanceMetallic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMath_1_1Vec3.html">Vec3</a> Raytracer::Renderer::reflectanceMetallic </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;&#160;</td>
+          <td class="paramname"><em>incidentRay</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;&#160;</td>
+          <td class="paramname"><em>normal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>metallic</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>do some calculations to get the color of the pixel when it's metallic </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">incidentRay</td><td></td></tr>
+    <tr><td class="paramname">normal</td><td></td></tr>
+    <tr><td class="paramname">color</td><td></td></tr>
+    <tr><td class="paramname">metallic</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structVec3.html">Vec3</a> </dd></dl>
+
+</div>
+</div>
+<a id="a6518597a41c074a64e56e31cc6547ea1" name="a6518597a41c074a64e56e31cc6547ea1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6518597a41c074a64e56e31cc6547ea1">&#9670;&#160;</a></span>refractRay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMath_1_1Vec3.html">Vec3</a> Raytracer::Renderer::refractRay </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;&#160;</td>
+          <td class="paramname"><em>incidentRay</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMath_1_1Vec3.html">Math::Vec3</a> &amp;&#160;</td>
+          <td class="paramname"><em>normal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>refractiveIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>transparency</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>do some calculations to get the color of the pixel when it's transparent </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">incidentRay</td><td></td></tr>
+    <tr><td class="paramname">normal</td><td></td></tr>
+    <tr><td class="paramname">refractiveIndex</td><td></td></tr>
+    <tr><td class="paramname">transparency</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structVec3.html">Vec3</a> </dd></dl>
+
+</div>
+</div>
+<a id="a58e43251ffb48b4e40d270994df1e862" name="a58e43251ffb48b4e40d270994df1e862"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58e43251ffb48b4e40d270994df1e862">&#9670;&#160;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Raytracer::Renderer::render </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structRaytracer_1_1RenderingArgs.html">RenderingArgs</a> &amp;&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>do all the calculations for the rendering, shadow rays, reflections, refractions ... </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="a8c5c82741ce78f22ede4adfd53bd07ea" name="a8c5c82741ce78f22ede4adfd53bd07ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c5c82741ce78f22ede4adfd53bd07ea">&#9670;&#160;</a></span>setThreads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Raytracer::Renderer::setThreads </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classRaytracer_1_1ParsingArgs.html">ParsingArgs</a> &amp;&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialize the threads for rendering </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="Renderer_8hpp_source.html">Renderer.hpp</a></li>
 <li>src/<a class="el" href="Renderer_8cpp.html">Renderer.cpp</a></li>

@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['ilights_0',['ILights',['../classILights.html',1,'']]],
-  ['ilights_2ehpp_1',['ILights.hpp',['../ILights_8hpp.html',1,'']]],
-  ['imagegenerator_2',['imageGenerator',['../classimageGenerator.html',1,'imageGenerator'],['../classimageGenerator.html#aaa56b826d59d143891c426b524ab9a2f',1,'imageGenerator::imageGenerator()']]],
-  ['imagegenerator_2ecpp_3',['imageGenerator.cpp',['../imageGenerator_8cpp.html',1,'']]],
-  ['imagegenerator_2ehpp_4',['imageGenerator.hpp',['../imageGenerator_8hpp.html',1,'']]],
-  ['iprimitive_5',['IPrimitive',['../classIPrimitive.html',1,'']]],
-  ['iprimitive_2ehpp_6',['IPrimitive.hpp',['../IPrimitive_8hpp.html',1,'']]]
+  ['getinstance_0',['getInstance',['../classLogger.html#acebb37f5538780e6c14f13de6ec497bc',1,'Logger']]],
+  ['getoutputname_1',['getOutputName',['../classRaytracer_1_1ParsingArgs.html#ada90a64d1439bd4503b31264a69baea5',1,'Raytracer::ParsingArgs']]],
+  ['getscenename_2',['getSceneName',['../classRaytracer_1_1ParsingArgs.html#aa52534cfbf1634d66116a6275f48abb6',1,'Raytracer::ParsingArgs']]]
 ];

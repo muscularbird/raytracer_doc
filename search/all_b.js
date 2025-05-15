@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_7eimagegenerator_0',['~imageGenerator',['../classimageGenerator.html#ad5b24156a317b90d5469b837dd896c41',1,'imageGenerator']]]
+  ['vec3_0',['vec3',['../structMath_1_1Vec3.html',1,'Math::Vec3'],['../structVec3.html',1,'Vec3']]],
+  ['vec3_2ehpp_1',['Vec3.hpp',['../Vec3_8hpp.html',1,'']]]
 ];

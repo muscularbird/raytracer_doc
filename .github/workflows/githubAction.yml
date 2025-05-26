@@ -6,6 +6,7 @@ on:
     branches:
       - main
       - master
+      - jona-IA
   pull_request:
 
 env:

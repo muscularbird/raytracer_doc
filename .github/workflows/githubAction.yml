@@ -8,6 +8,11 @@ on:
       - master
   pull_request:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 env:
   EXECUTABLES_GUI: ./zappy_gui
   EXECUTABLES_AI: ./zappy_ai
@@ -103,22 +108,24 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Install Doxygen
-        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
+      # - name: Install Doxygen
+      #   run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
 
-      - name: Generate documentation with Doxygen
-        run: |
-          if [ -f Doxyfile ]; then
-            doxygen Doxyfile
-            if [ -d "latex" ]; then
-              cp -r latex $(pwd)/
-            fi
-            if [ -d "html" ]; then
-              cp -r html $(pwd)/
-            fi      else
-            echo "No Doxyfile found at project root."
-            exit 1
-          fi
+      # - name: Generate documentation with Doxygen
+      #   run: |
+      #     if [ -f Doxyfile ]; then
+      #       doxygen Doxyfile
+      #       if [ -d "latex" ]; then
+      #         cp -r latex $(pwd)/
+      #       fi
+      #       if [ -d "html" ]; then
+      #         cp -r html $(pwd)/
+      #       fi      else
+      #       echo "No Doxyfile found at project root."
+      #       exit 1
+      #     fi
+      - name: Doxygen as Action
+        uses: dreygur/doxygen@1.0.1
 
   push_to_mirror:
     runs-on: ubuntu-latest

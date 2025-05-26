@@ -15,6 +15,16 @@ env:
   MIRROR_URL: git@github.com:EpitechPromo2028/B-YEP-400-NCY-4-1-zappy-william.sitt.git
 
 jobs:
+  check_depot:
+    if: github.repository == 'EpitechPromo2028/B-YEP-400-NCY-4-1-zappy-william.sitt'
+    runs-on: ubuntu-latest
+    name: Check if the repository is the correct one
+
+    steps:
+      - name: Check repository
+        run: |
+          exit 0
+
   build:
     runs-on: ubuntu-latest
     name: Check compilation of the project

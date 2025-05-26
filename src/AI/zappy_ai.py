@@ -3,6 +3,7 @@
 import logging
 from sys import argv, exit
 from parsing import parse_args
+from connection import Connection
 
 
 
@@ -41,7 +42,13 @@ def main():
             return usage()
         
         values = parse_args(argv)
-        print(values)
+        connection = Connection(values)
+        m = connection.receive()
+        print(m.strip())
+        
+        connection.send("tata")
+        r = connection.receive()
+        print(r.strip())
         logging.info("----------- AI ENDS SUCCESSFULLY -----------")
         return 0
     except Exception as e:

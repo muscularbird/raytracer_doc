@@ -110,7 +110,12 @@ jobs:
         run: |
           if [ -f Doxyfile ]; then
             doxygen Doxyfile
-          else
+            if [ -d "latex" ]; then
+              cp -r latex $(pwd)/
+            fi
+            if [ -d "html" ]; then
+              cp -r html $(pwd)/
+            fi      else
             echo "No Doxyfile found at project root."
             exit 1
           fi

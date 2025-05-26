@@ -15,14 +15,6 @@ env:
   MIRROR_URL: git@github.com:EpitechPromo2028/B-YEP-400-NCY-4-1-zappy-william.sitt.git
 
 jobs:
-  start_job:
-    if: github.repository != 'EpitechPromo2028/B-YEP-400-NCY-4-1-zappy-william.sitt'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fail if not main repository
-        run: |
-          echo "This workflow only runs on the main repository."
-          exit 1
   build:
     runs-on: ubuntu-latest
     name: Check compilation of the project

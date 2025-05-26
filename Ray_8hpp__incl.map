@@ -1,9 +1,0 @@
-<map id="include/Ray.hpp" name="include/Ray.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="20,5,134,32"/>
-<area shape="rect" id="Node000002" href="$Vec3_8hpp.html" title="3 dimensions vector class" alt="" coords="39,80,114,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,33,79,64,74,64,74,33"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,155,63,181"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="72,109,51,143,47,140,67,106"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="86,155,155,181"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="87,106,107,140,103,143,82,109"/>
-</map>

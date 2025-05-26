@@ -1,0 +1,9 @@
+zappy_server
+zappy_gui
+zappy_ai
+*.json
+obj
+logs
+html
+latex
+a.out

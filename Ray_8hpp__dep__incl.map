@@ -1,9 +1,0 @@
-<map id="include/Ray.hpp" name="include/Ray.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="76,5,190,32"/>
-<area shape="rect" id="Node000002" href="$Renderer_8hpp.html" title=" " alt="" coords="60,80,205,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,48,135,80,130,80,130,48"/>
-<area shape="rect" id="Node000003" href="$Renderer_8cpp.html" title=" " alt="" coords="5,155,127,181"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="113,120,79,156,76,152,109,116"/>
-<area shape="rect" id="Node000004" href="$main_8cpp.html" title="main function for the raytracer" alt="" coords="151,155,248,181"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="156,116,190,152,186,156,153,120"/>
-</map>

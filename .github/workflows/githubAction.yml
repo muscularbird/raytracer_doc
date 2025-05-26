@@ -1,0 +1,136 @@
+name: Automated Testing
+run-name: ${{ github.actor }} is eating a monkey.
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+env:
+  EXECUTABLES_GUI: ./zappy_gui
+  EXECUTABLES_AI: ./zappy_ai
+  EXECUTABLES_SERV: ./zappy_server
+  MIRROR_URL: git@github.com:EpitechPromo2028/B-YEP-400-NCY-4-1-zappy-william.sitt.git
+
+jobs:
+  start_job:
+    if: github.repository != 'EpitechPromo2028/B-YEP-400-NCY-4-1-zappy-william.sitt'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if not main repository
+        run: |
+          echo "This workflow only runs on the main repository."
+          exit 1
+  build:
+    runs-on: ubuntu-latest
+    name: Check compilation of the project
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      timeout-minutes: 2
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y build-essential libconfig++-dev libsfml-dev
+      timeout-minutes: 5
+
+    - name: Build gui
+      run: |
+        make zappy_gui
+      timeout-minutes: 2
+
+    - name: Build server
+      run: |
+        make zappy_server
+      timeout-minutes: 2
+
+    # - name: Build ai
+    #   run: |
+    #     make zappy_gui
+    #   timeout-minutes: 2
+
+    - name: Verify executable GUI
+      run: |
+        if [ ! -x "${{ env.EXECUTABLES_GUI }}" ]; then
+          echo "Error: Executable ${{ env.EXECUTABLES_GUI }} does not exist or is not executable."
+          exit 1
+        fi
+      timeout-minutes: 2
+
+    - name: Verify executable SERV
+      run: |
+        if [ ! -x "${{ env.EXECUTABLES_SERV }}" ]; then
+          echo "Error: Executable ${{ env.EXECUTABLES_SERV }} does not exist or is not executable."
+          exit 1
+        fi
+      timeout-minutes: 2
+
+    # - name: Verify executable AI
+    #   run: |
+    #     if [ ! -x "${{ env.EXECUTABLES_AI }}" ]; then
+    #       echo "Error: Executable ${{ env.EXECUTABLES_AI }} does not exist or is not executable."
+    #       exit 1
+    #     fi
+    #   timeout-minutes: 2
+
+  coding-style:
+    runs-on: ubuntu-latest
+    container: ghcr.io/epitech/coding-style-checker:latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+        with:
+          repository: ''
+      
+      - name: Run coding-style
+        run: check.sh $(pwd) $(pwd)
+
+      - name: Creating proper log for coding style
+        run: |
+          input=$(pwd)/coding-style-reports.log
+          while IFS= read -r -a line; do
+            fields=($(printf "%s" "$line"|cut -d':' --output-delimiter=' ' -f1-))
+            echo "::error title=${fields[2]} coding style error,file=${fields[0]},line=${fields[1]}::${fields[3]}"
+          done < $input
+        
+      - name: Coding style report
+        run: |
+          NB_ERROR=$(cat $(pwd)/coding-style-reports.log | wc -l)
+          if [ $NB_ERROR -gt 0 ]; then
+            exit 1
+          fi
+
+  # generate_doc:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repo
+  #       uses: actions/checkout@v4
+
+  #     - name: Install Doxygen
+  #       run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
+
+  #     - name: Generate documentation with Doxygen
+  #       run: |
+  #         if [ -f Doxyfile ]; then
+  #           doxygen Doxyfile
+  #         else
+  #           echo "No Doxyfile found at project root."
+  #           exit 1
+  #         fi
+
+  push_to_mirror:
+    runs-on: ubuntu-latest
+    needs: [coding-style, build]
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          target_repo_url:
+            ${{ env.MIRROR_URL }}
+          ssh_private_key:
+            ${{ secrets.GIT_SSH_PRIVATE_KEY }}

@@ -1,9 +1,0 @@
-<map id="IPrimitive" name="IPrimitive">
-<area shape="rect" id="Node000001" title=" " alt="" coords="36,5,112,32"/>
-<area shape="rect" id="Node000002" href="$classAPrimitive.html" title=" " alt="" coords="33,80,114,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,48,76,80,71,80,71,48"/>
-<area shape="rect" id="Node000003" href="$classPlane.html" title=" " alt="" coords="5,155,60,181"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="62,122,42,156,37,153,57,119"/>
-<area shape="rect" id="Node000004" href="$classSphere.html" title=" " alt="" coords="84,155,146,181"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="91,119,110,153,106,156,86,122"/>
-</map>

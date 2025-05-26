@@ -77,9 +77,19 @@ jobs:
           repository: ''
       
       - name: Run coding-style
-        run: check.sh $(pwd) $(pwd)
+        run: check.sh $(pwd)/src/serveur $(pwd)
         
       - name: Coding style report
+        run: |
+          NB_ERROR=$(cat $(pwd)/coding-style-reports.log | wc -l)
+          if [ $NB_ERROR -gt 0 ]; then
+            exit 1
+          fi
+
+      - name: Run coding-style for include
+        run: check.sh $(pwd)/include/serveur $(pwd)
+        
+      - name: Coding style report for include
         run: |
           NB_ERROR=$(cat $(pwd)/coding-style-reports.log | wc -l)
           if [ $NB_ERROR -gt 0 ]; then

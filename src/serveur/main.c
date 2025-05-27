@@ -28,7 +28,7 @@ static void free_data(server_config_t *config)
 
 static bool init_config(server_config_t *config)
 {
-    config->port = 42;
+    config->port = 4242;
     config->width = 10;
     config->height = 10;
     config->teams = calloc(3, sizeof(char *));
@@ -84,6 +84,7 @@ int main(int ac, char **av)
         return EXIT_FAIL;
     }
     debug(&config);
+    start_server(&config);
     free_data(&config);
     return EXIT_SUCCESS;
 }

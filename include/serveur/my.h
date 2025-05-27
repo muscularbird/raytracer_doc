@@ -47,10 +47,21 @@ typedef struct client_list_s {
     int count;
 } client_list_t;
 
+
+typedef struct object_s {
+    int x;
+    int y;
+    enum object_type type;
+    struct object_s *next;
+} object_t;
+
 typedef struct serveur_s {
     // char *map; // pour stocker la map
     int server_fd;
-    struct players *players; // pour stocker les info des ia
+    struct players *players;
+    object_t *object_list;
+    int map_width;
+    int map_height;
     client_list_t client_list;
 } serveur_t;
 
@@ -64,6 +75,12 @@ struct player {
     int level;
     bool isGUI;
     inventory_t inventory;
+};
+
+enum object_type {
+    FOOD = 0,
+    SIBUR = 1,
+    PHIRAS = 2
 };
 
 struct players {

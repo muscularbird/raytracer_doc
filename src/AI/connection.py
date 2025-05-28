@@ -4,10 +4,10 @@ import socket
 class Connection:
     """the following class handle all connection features with the socket library
     """
-    def __init__(self, args: dict):
-        self.sock: socket = socket.create_connection((args["-h"], args["-p"]))
+    def __init__(self, host: str, port: int):
+        self.sock: socket = socket.create_connection((host, port))
         self.sock.setblocking(True)
-        logging.info(f"successfully connected to the server {args['-h']} on port {args['-p']}")
+        logging.info(f"successfully connected to the server {host} on port {port}")
         
     def send(self, message: str):
         self.sock.sendall((message.strip() + '\n').encode())

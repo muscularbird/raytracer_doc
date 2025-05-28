@@ -127,6 +127,31 @@ jobs:
   #     - name: Doxygen as Action
   #       uses: dreygur/doxygen@1.0.1
 
+  pytest-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install pytest
+
+      - name: Run pytest
+        env:
+          PYTHONPATH: .
+        run: |
+          source venv/bin/activate
+          pytest src/AI/tests
+
   push_to_mirror:
     runs-on: ubuntu-latest
     needs: [coding-style, build]

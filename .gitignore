@@ -7,3 +7,8 @@ logs
 html
 latex
 a.out
+src/AI/zappy_ai.log
+src/AI/__pycache__
+src/AI/tests/__pycache__
+src/AI/venv
+src/AI/tests/zappy_server

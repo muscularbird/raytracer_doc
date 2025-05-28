@@ -47,6 +47,11 @@ typedef struct client_list_s {
     int count;
 } client_list_t;
 
+enum object_type {
+    FOOD = 0,
+    SIBUR = 1,
+    PHIRAS = 2
+};
 
 typedef struct object_s {
     int x;
@@ -77,11 +82,6 @@ struct player {
     inventory_t inventory;
 };
 
-enum object_type {
-    FOOD = 0,
-    SIBUR = 1,
-    PHIRAS = 2
-};
 
 struct players {
     struct player *players;

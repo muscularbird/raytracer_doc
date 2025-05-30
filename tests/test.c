@@ -41,6 +41,16 @@ int main(int argc, char **argv)
     while ((n = read(sock, buf, BUF_SIZE - 1)) > 0) {
         buf[n] = '\0';
         printf("%s", buf);
+        break;
+    }
+
+    // Send a message to the server
+    const char *msg = "Epitech\n";
+    ssize_t sent = send(sock, msg, strlen(msg), 0);
+    if (sent < 0) {
+        perror("send");
+    } else {
+        printf("Sent %zd bytes to server\n", sent);
     }
 
     close(sock);

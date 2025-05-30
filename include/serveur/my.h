@@ -26,12 +26,14 @@
 
     #define EXIT_FAIL 84
     #define EXIT_SUCCESS 0
+    #define BUFFER_SIZE 1024
 
 typedef struct server_config_s {
     int port;
     int width;
     int height;
     char **teams;
+    int team_nb;
     int client_nb;
     int freq;
 } server_config_t;
@@ -77,6 +79,7 @@ struct player {
     };
     int fd;
     unsigned short id;
+    char *team_name;
     int level;
     bool isGUI;
     inventory_t inventory;
@@ -90,5 +93,10 @@ struct players {
 
 bool parsing(char **av, server_config_t *config);
 int start_server(server_config_t *config);
+int add_client(serveur_t *serv, int client_fd);
+int remove_client(serveur_t *serv, int index);
+int find_index(serveur_t *serveur, int id_client);
+void send_log_info(serveur_t *serveur, server_config_t *config);
+
 
 #endif /* !MY_H_ */

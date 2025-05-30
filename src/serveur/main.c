@@ -39,6 +39,7 @@ static bool init_config(server_config_t *config)
     config->teams[0] = strdup("Epitech");
     config->teams[1] = strdup("Nancy");
     config->client_nb = 2;
+    config->team_nb = 2;
     config->freq = 100;
     return 0;
 }

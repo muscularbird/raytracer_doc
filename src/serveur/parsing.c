@@ -50,6 +50,7 @@ static bool flag_n(int *i, char **av, server_config_t *config)
             return true + 0 * fprintf(stderr, "Memory alloc failed\n");
     }
     config->teams[temporary] = NULL;
+    config->team_nb = temporary;
     return false;
 }
 

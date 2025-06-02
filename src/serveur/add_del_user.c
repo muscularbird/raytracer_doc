@@ -72,7 +72,9 @@ static bool create_player(struct players *players, int fd)
         .x = 0,
         .y = 0,
         .id = id,
-        .fd = fd
+        .fd = fd,
+        .buff = {0},
+        .team_name = NULL
     };
     players->players = __players;
     players->nplayers++;

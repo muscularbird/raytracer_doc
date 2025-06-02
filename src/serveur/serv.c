@@ -43,8 +43,6 @@ static void sighandler(int sig)
         *run_serv = 0;
 }
 
-// else
-//     recv_from_cli(serveur, i);
 static void dispatch(serveur_t *serveur, int i, server_config_t *config)
 {
     client_list_t *cli_list = &serveur->client_list;
@@ -52,6 +50,8 @@ static void dispatch(serveur_t *serveur, int i, server_config_t *config)
     if (cli_list->clients[i].revents & POLLIN) {
         if (cli_list->clients[i].fd == serveur->server_fd)
             send_log_info(serveur, config);
+        else
+            recv_from_cli(serveur, i);
     }
 }
 

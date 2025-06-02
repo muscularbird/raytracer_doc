@@ -82,6 +82,7 @@ struct player {
     char *team_name;
     int level;
     bool isGUI;
+    char buff[BUFFER_SIZE];
     inventory_t inventory;
 };
 
@@ -97,6 +98,8 @@ int add_client(serveur_t *serv, int client_fd);
 int remove_client(serveur_t *serv, int index);
 int find_index(serveur_t *serveur, int id_client);
 void send_log_info(serveur_t *serveur, server_config_t *config);
+void recv_from_cli(serveur_t *serveur, int index);
+
 
 
 #endif /* !MY_H_ */

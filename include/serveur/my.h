@@ -27,6 +27,7 @@
     #define EXIT_FAIL 84
     #define EXIT_SUCCESS 0
     #define BUFFER_SIZE 1024
+    #define OK_CMD "ok\n"
 
 typedef struct server_config_s {
     int port;
@@ -34,6 +35,7 @@ typedef struct server_config_s {
     int height;
     char **teams;
     int team_nb;
+    int *teams_count;
     int client_nb;
     int freq;
 } server_config_t;
@@ -100,13 +102,52 @@ struct players {
     size_t nplayers;
 };
 
+
+typedef void (*command_func_t)(serveur_t *, int, const char *,
+    server_config_t *);
+
+typedef struct {
+    const char *name;
+    command_func_t func;
+} command_entry_t;
+
+void cmd_forward(serveur_t *, int, const char *, server_config_t *);
+void cmd_right(serveur_t *, int, const char *, server_config_t *);
+void cmd_left(serveur_t *, int, const char *, server_config_t *);
+void cmd_inventory(serveur_t *, int, const char *, server_config_t *);
+void cmd_look(serveur_t *, int, const char *, server_config_t *);
+void cmd_broadcast(serveur_t *, int, const char *, server_config_t *);
+void cmd_connect_nbr(serveur_t *, int, const char *, server_config_t *);
+void cmd_fork(serveur_t *, int, const char *, server_config_t *);
+void cmd_eject(serveur_t *, int, const char *, server_config_t *);
+void cmd_take(serveur_t *, int, const char *, server_config_t *);
+void cmd_set(serveur_t *, int, const char *, server_config_t *);
+void cmd_incantation(serveur_t *, int, const char *, server_config_t *);
+
+static const command_entry_t command_table[] = {
+    { "Forward", cmd_forward },
+    { "Right", cmd_right },
+    { "Left", cmd_left },
+    { "Look", cmd_look },
+    { "Inventory", cmd_inventory },
+    { "Broadcast", cmd_broadcast },
+    { "Connect_nbr", cmd_connect_nbr },
+    { "Fork", cmd_fork },
+    { "Eject", cmd_eject },
+    { "Take", cmd_take },
+    { "Set", cmd_set },
+    { "Incantation", cmd_incantation },
+    { NULL, NULL }
+};
+
 bool parsing(char **av, server_config_t *config);
 int start_server(server_config_t *config);
 int add_client(serveur_t *serv, int client_fd);
 int remove_client(serveur_t *serv, int index);
 int find_index(serveur_t *serveur, int id_client);
 void send_log_info(serveur_t *serveur, server_config_t *config);
-void recv_from_cli(serveur_t *serveur, int index);
+void recv_from_cli(serveur_t *serveur, int index, server_config_t *config);
+int find_index_team(server_config_t *conf, const char *team_name);
 
 
 

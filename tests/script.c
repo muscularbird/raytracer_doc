@@ -46,10 +46,10 @@ int main() {
 
 
     read_response(sock);
-    send_command(sock, "Epi", 0);
-    sleep(0.8);
-    send_command(sock, "tech", 0);
-    sleep(1);
+    send_command(sock, "GRAPHIC", 0);
+    // sleep(0.8);
+    // send_command(sock, "IC", 0);
+    // sleep(1);
     send_command(sock, "\r\n", 0);
     sleep(0.5);
     read_response(sock);

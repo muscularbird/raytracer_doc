@@ -11,7 +11,7 @@ static bool timeout_check(serveur_t *serv, int ind, int fd, struct pollfd *pfd)
 {
     int poll_ret = 0;
 
-    poll_ret = poll(pfd, 1, 2000);
+    poll_ret = poll(pfd, 1, 500);
     if (poll_ret == 0) {
         printf("Timeout waiting for client %d\n", fd);
         remove_client(serv, ind + 1);

@@ -31,15 +31,16 @@ static bool init_config(server_config_t *config)
     config->port = 4242;
     config->width = 10;
     config->height = 10;
-    config->teams = calloc(3, sizeof(char *));
+    config->teams = calloc(4, sizeof(char *));
     if (!config->teams) {
         perror("Failed to allocate memory for teams");
         return 1;
     }
     config->teams[0] = strdup("Epitech");
     config->teams[1] = strdup("Nancy");
+    config->teams[2] = strdup("GRAPHIC");
     config->client_nb = 2;
-    config->team_nb = 2;
+    config->team_nb = 3;
     config->freq = 100;
     return 0;
 }

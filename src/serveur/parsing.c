@@ -30,10 +30,21 @@ static bool parse_flag(server_config_t *config, char **av, int *i)
     return true;
 }
 
+static bool flag_n_scpart(server_config_t *config, int temporary)
+{
+    free(config->teams[temporary - 1]);
+    config->teams[temporary - 1] = strdup("GRAPHIC");
+    if (!config->teams[temporary - 1])
+        return true + 0 * fprintf(stderr, "Memory alloc failed\n");
+    config->teams[temporary] = NULL;
+    config->team_nb = temporary;
+    return false;
+}
+
 static bool flag_n(int *i, char **av, server_config_t *config)
 {
     int j = 0;
-    int temporary = 0;
+    int temporary = 1;
 
     (*i)++;
     j = *i;
@@ -49,8 +60,8 @@ static bool flag_n(int *i, char **av, server_config_t *config)
         if (!config->teams[k])
             return true + 0 * fprintf(stderr, "Memory alloc failed\n");
     }
-    config->teams[temporary] = NULL;
-    config->team_nb = temporary;
+    if (flag_n_scpart(config, temporary))
+        return true;
     return false;
 }
 

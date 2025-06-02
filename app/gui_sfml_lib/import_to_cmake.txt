@@ -1,0 +1,13 @@
+name_paterne:
+    color/shape/usage/function
+
+include:
+    gui_sfml_lib/src/BlueButton.cpp
+    gui_sfml_lib/src/GreyButton.cpp
+    gui_sfml_lib/src/RectangleShape.cpp
+    gui_sfml_lib/src/CircleShape.cpp
+    gui_sfml_lib/src/BlueCircleButton.cpp
+    gui_sfml_lib/src/BlueCircleCheckableButton.cpp
+    gui_sfml_lib/src/WhiteTexteComponent.cpp
+    gui_sfml_lib/src/TextInputComponent.cpp
+    gui_sfml_lib/src/BlackTexteComponent.cpp

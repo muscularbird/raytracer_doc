@@ -37,7 +37,7 @@ static char *rm_helper_client(serveur_t *serveur, int index, char *msg)
 
 static bool find_end_buf(char **end, char *buffer)
 {
-    *end = strstr(buffer, "\r\n");
+    *end = strstr(buffer, "\n");
     if (*end) {
         **end = '\0';
         return true;
@@ -72,11 +72,11 @@ char *read_log_data(serveur_t *serveur, int client_fd, int index)
 void validate_team_name(int index, char *buf, serveur_t *serv,
     server_config_t *conf)
 {
-    char client_nb_str[48] = {0};
+    char cli_s[48] = {0};
     int client_fd = serv->players->players[index].fd + 1;
     int found = 0;
 
-    serv->players->players[index].team_name = buf;
+    serv->players->players[index + 1].team_name = buf;
     for (int t = 0; t < conf->team_nb; t++) {
         if (strcmp(buf, conf->teams[t]) == 0) {
             found = 1;
@@ -89,9 +89,9 @@ void validate_team_name(int index, char *buf, serveur_t *serv,
         remove_client(serv, index + 1);
         return;
     }
-    sprintf(client_nb_str, "%d\n%d %d\n", conf->client_nb, conf->width,
-        conf->height);
-    send(client_fd, client_nb_str, strlen(client_nb_str), MSG_NOSIGNAL);
+    conf->teams_count[find_index_team(conf, buf)]++;
+    sprintf(cli_s, "%d\n%d %d\n", conf->client_nb, conf->width, conf->height);
+    send(client_fd, cli_s, strlen(cli_s), MSG_NOSIGNAL);
 }
 
 void send_log_info(serveur_t *serveur, server_config_t *config)

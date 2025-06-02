@@ -38,6 +38,13 @@ static bool flag_n_scpart(server_config_t *config, int temporary)
         return true + 0 * fprintf(stderr, "Memory alloc failed\n");
     config->teams[temporary] = NULL;
     config->team_nb = temporary;
+    config->teams_count = calloc(temporary, sizeof(int));
+    if (!config->teams_count) {
+        perror("Failed to allocate memory for team_count");
+        return 1;
+    }
+    for (int i = 0; i < temporary; i++)
+        config->teams_count[i] = 0;
     return false;
 }
 

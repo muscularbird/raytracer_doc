@@ -51,7 +51,7 @@ static void dispatch(serveur_t *serveur, int i, server_config_t *config)
         if (cli_list->clients[i].fd == serveur->server_fd)
             send_log_info(serveur, config);
         else
-            recv_from_cli(serveur, i);
+            recv_from_cli(serveur, i, config);
     }
 }
 

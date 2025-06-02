@@ -10,7 +10,7 @@
 
 char *extract_command(char *buffer)
 {
-    char *end = strstr(buffer, "\r\n");
+    char *end = strstr(buffer, "\n");
     size_t cmd_len = 0;
     char *cmd = NULL;
 
@@ -27,31 +27,41 @@ char *extract_command(char *buffer)
 
 void shift_buffer(char *buffer)
 {
-    char *end = strstr(buffer, "\r\n");
+    char *end = strstr(buffer, "\n");
 
     if (!end)
         return;
-    end += 2;
+    end += 1;
     memmove(buffer, end, strlen(end) + 1);
 }
 
-static void see_cmd(serveur_t *serveur, int index)
+static void dispatch_command(serveur_t *serveur, int ind, const char *cmd,
+    server_config_t *config)
+{
+    for (int i = 0; command_table[i].name != NULL; i++) {
+        if (strncmp(cmd, command_table[i].name,
+            strlen(command_table[i].name)) == 0) {
+            command_table[i].func(serveur, ind, cmd, config);
+            return;
+        }
+    }
+    send(serveur->client_list.clients[ind].fd, "Ko\n", 3, MSG_NOSIGNAL);
+}
+
+static void see_cmd(serveur_t *serveur, int index, server_config_t *config)
 {
     char *cmd = extract_command(serveur->players->players[index].buff);
 
     if (cmd) {
-        printf("Received from client %d: %s\n",
-            serveur->client_list.clients[index].fd, cmd);
+        dispatch_command(serveur, index, cmd, config);
         free(cmd);
         shift_buffer(serveur->players->players[index].buff);
-        printf("Buffer after shift: %s\n",
-            serveur->players->players[index].buff);
-        see_cmd(serveur, index);
+        see_cmd(serveur, index, config);
     } else
         return;
 }
 
-void recv_from_cli(serveur_t *serveur, int index)
+void recv_from_cli(serveur_t *serveur, int index, server_config_t *config)
 {
     char buf[BUFFER_SIZE] = {0};
     int bytes_read = recv(serveur->client_list.clients[index].fd, buf,
@@ -62,5 +72,5 @@ void recv_from_cli(serveur_t *serveur, int index)
     buf[bytes_read] = '\0';
     strncat(serveur->players->players[index].buff, buf,
         BUFFER_SIZE - strlen(serveur->players->players[index].buff) - 1);
-    see_cmd(serveur, index);
+    see_cmd(serveur, index, config);
 }

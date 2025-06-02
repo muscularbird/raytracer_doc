@@ -47,13 +47,12 @@ int main() {
 
     read_response(sock);
     send_command(sock, "Epitech", 0);
-    send_command(sock, "\r\n", 0);
+    send_command(sock, "\n", 0);
     sleep(0.5);
     read_response(sock);
     sleep(1);
-    send_command(sock, "bonjour tu vas bien", 0);
     sleep(1);
-    send_command(sock, "\r\nvoir\r\n", 0);
+    send_command(sock, "Connect_nbr\n", 1);
     sleep(2);
     printf("finish\n");
 

@@ -26,6 +26,21 @@ static void free_data(server_config_t *config)
     }
 }
 
+static bool init_config_end(server_config_t *config)
+{
+    config->teams_count = calloc(3, sizeof(int));
+    if (!config->teams_count) {
+        perror("Failed to allocate memory for team_count");
+        return 1;
+    }
+    for (int i = 0; i < 3; i++)
+        config->teams_count[i] = 0;
+    config->client_nb = 2;
+    config->team_nb = 3;
+    config->freq = 100;
+    return 0;
+}
+
 static bool init_config(server_config_t *config)
 {
     config->port = 4242;
@@ -39,9 +54,8 @@ static bool init_config(server_config_t *config)
     config->teams[0] = strdup("Epitech");
     config->teams[1] = strdup("Nancy");
     config->teams[2] = strdup("GRAPHIC");
-    config->client_nb = 2;
-    config->team_nb = 3;
-    config->freq = 100;
+    if (init_config_end(config))
+        return 1;
     return 0;
 }
 

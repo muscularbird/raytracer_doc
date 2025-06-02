@@ -40,8 +40,12 @@ typedef struct server_config_s {
 
 typedef struct inventory_s {
     int food;
+    int linemate;
+    int deraumere;
     int sibur;
+    int mendiane;
     int phiras;
+    int thystame;
 } inventory_t;
 
 typedef struct client_list_s {
@@ -50,9 +54,13 @@ typedef struct client_list_s {
 } client_list_t;
 
 enum object_type {
-    FOOD = 0,
-    SIBUR = 1,
-    PHIRAS = 2
+    FOOD,
+    LINEMATE,
+    DERAUMERE,
+    SIBUR,
+    MENDIANE,
+    PHIRAS,
+    THYSTAME
 };
 
 typedef struct object_s {

@@ -24,6 +24,9 @@ static void free_data(server_config_t *config)
         }
         free(config->teams);
     }
+    if (config->teams_count) {
+        free(config->teams_count);
+    }
 }
 
 static bool init_config_end(server_config_t *config)

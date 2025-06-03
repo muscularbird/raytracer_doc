@@ -75,22 +75,22 @@ enum obj_type {
     LAST_OBJECT
 };
 
-typedef struct tile_s {
+typedef struct object_s {
     int x;
     int y;
-    enum obj_type* obj;
+    enum obj_type type;
     struct object_s *next;
-} tile_t;
+} object_t;
 
-typedef struct server_s {
+typedef struct serveur_s {
+    // char *map; // pour stocker la map
     int server_fd;
     struct players *players;
-    tile_t *map;
-    float *map_density;
+    object_t *object_list;
     int map_width;
     int map_height;
     client_list_t client_list;
-} server_t;
+} serveur_t;
 
 struct player {
     struct {
@@ -113,7 +113,7 @@ struct players {
 };
 
 
-typedef void (*command_func_t)(server_t *, int, const char *,
+typedef void (*command_func_t)(serveur_t *, int, const char *,
     server_config_t *);
 
 typedef struct {
@@ -121,18 +121,18 @@ typedef struct {
     command_func_t func;
 } command_entry_t;
 
-void cmd_forward(server_t *, int, const char *, server_config_t *);
-void cmd_right(server_t *, int, const char *, server_config_t *);
-void cmd_left(server_t *, int, const char *, server_config_t *);
-void cmd_inventory(server_t *, int, const char *, server_config_t *);
-void cmd_look(server_t *, int, const char *, server_config_t *);
-void cmd_broadcast(server_t *, int, const char *, server_config_t *);
-void cmd_connect_nbr(server_t *, int, const char *, server_config_t *);
-void cmd_fork(server_t *, int, const char *, server_config_t *);
-void cmd_eject(server_t *, int, const char *, server_config_t *);
-void cmd_take(server_t *, int, const char *, server_config_t *);
-void cmd_set(server_t *, int, const char *, server_config_t *);
-void cmd_incantation(server_t *, int, const char *, server_config_t *);
+void cmd_forward(serveur_t *, int, const char *, server_config_t *);
+void cmd_right(serveur_t *, int, const char *, server_config_t *);
+void cmd_left(serveur_t *, int, const char *, server_config_t *);
+void cmd_inventory(serveur_t *, int, const char *, server_config_t *);
+void cmd_look(serveur_t *, int, const char *, server_config_t *);
+void cmd_broadcast(serveur_t *, int, const char *, server_config_t *);
+void cmd_connect_nbr(serveur_t *, int, const char *, server_config_t *);
+void cmd_fork(serveur_t *, int, const char *, server_config_t *);
+void cmd_eject(serveur_t *, int, const char *, server_config_t *);
+void cmd_take(serveur_t *, int, const char *, server_config_t *);
+void cmd_set(serveur_t *, int, const char *, server_config_t *);
+void cmd_incantation(serveur_t *, int, const char *, server_config_t *);
 
 static const command_entry_t command_table[] = {
     { "Forward", cmd_forward },
@@ -152,11 +152,11 @@ static const command_entry_t command_table[] = {
 
 bool parsing(char **av, server_config_t *config);
 int start_server(server_config_t *config);
-int add_client(server_t *serv, int client_fd);
-int remove_client(server_t *serv, int index);
-int find_index(server_t *serveur, int id_client);
-void send_log_info(server_t *serveur, server_config_t *config);
-void recv_from_cli(server_t *serveur, int index, server_config_t *config);
+int add_client(serveur_t *serv, int client_fd);
+int remove_client(serveur_t *serv, int index);
+int find_index(serveur_t *serveur, int id_client);
+void send_log_info(serveur_t *serveur, server_config_t *config);
+void recv_from_cli(serveur_t *serveur, int index, server_config_t *config);
 int find_index_team(server_config_t *conf, const char *team_name);
 
 

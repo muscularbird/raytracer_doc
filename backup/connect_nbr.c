@@ -8,7 +8,7 @@
 #include "../../../include/serveur/my.h"
 
 // do the connect number logic here
-void cmd_connect_nbr(server_t *serv, int index, const char *cmd,
+void cmd_connect_nbr(serveur_t *serv, int index, const char *cmd,
     server_config_t *conf)
 {
     char buffer[13] = {0};

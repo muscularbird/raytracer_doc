@@ -24,21 +24,25 @@ static void free_data(server_config_t *config)
         }
         free(config->teams);
     }
-    if (config->teams_count) {
-        free(config->teams_count);
-    }
+    if (config->teams_count_max)
+        free(config->teams_count_max);
+    if (config->teams_count_connect)
+        free(config->teams_count_connect);
 }
 
 static bool init_config_end(server_config_t *config)
 {
-    config->teams_count = calloc(3, sizeof(int));
-    if (!config->teams_count) {
+    config->teams_count_max = calloc(3, sizeof(int));
+    config->teams_count_connect = calloc(3, sizeof(int));
+    if (!config->teams_count_max || !config->teams_count_connect) {
         perror("Failed to allocate memory for team_count");
         return 1;
     }
-    for (int i = 0; i < 3; i++)
-        config->teams_count[i] = 0;
     config->client_nb = 2;
+    for (int i = 0; i < 3; i++) {
+        config->teams_count_max[i] = config->client_nb;
+        config->teams_count_connect[i] = 0;
+    }
     config->team_nb = 3;
     config->freq = 100;
     return 0;
@@ -64,9 +68,10 @@ static bool init_config(server_config_t *config)
 
 bool fill_struct(server_config_t *config, char **av)
 {
-    if (strcmp(av[1], "--d") == 0)
-        init_config(config);
-    else if (parsing(av, config)) {
+    if (strcmp(av[1], "--d") == 0) {
+        if (init_config(config))
+            return true;
+    } else if (parsing(av, config)) {
         usage();
         return true;
     }

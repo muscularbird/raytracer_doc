@@ -7,7 +7,7 @@
 
 #include "../../include/serveur/my.h"
 
-static bool timeout_check(server_t *serv, int ind, int fd, struct pollfd *pfd)
+static bool timeout_check(serveur_t *serv, int ind, int fd, struct pollfd *pfd)
 {
     int poll_ret = 0;
 
@@ -25,7 +25,7 @@ static bool timeout_check(server_t *serv, int ind, int fd, struct pollfd *pfd)
     return false;
 }
 
-static char *rm_helper_client(server_t *serveur, int index, char *msg)
+static char *rm_helper_client(serveur_t *serveur, int index, char *msg)
 {
     int client_fd = serveur->client_list.clients[index].fd;
 
@@ -45,7 +45,7 @@ static bool find_end_buf(char **end, char *buffer)
     return false;
 }
 
-char *read_log_data(server_t *serveur, int client_fd, int index)
+char *read_log_data(serveur_t *serveur, int client_fd, int index)
 {
     size_t total_read = 0;
     char buffer[BUFFER_SIZE] = {0};
@@ -70,7 +70,7 @@ char *read_log_data(server_t *serveur, int client_fd, int index)
 }
 
 static bool validate_number_of_player(server_config_t *conf, const char *buf,
-    server_t *serv, int pos)
+    serveur_t *serv, int pos)
 {
     int index = find_index_team(conf, buf);
     int client_fd = serv->players->players[pos].fd + 1;
@@ -88,7 +88,7 @@ static bool validate_number_of_player(server_config_t *conf, const char *buf,
     return false;
 }
 
-void validate_team_name(int index, char *buf, server_t *serv,
+void validate_team_name(int index, char *buf, serveur_t *serv,
     server_config_t *conf)
 {
     int client_fd = serv->players->players[index].fd + 1;
@@ -110,7 +110,7 @@ void validate_team_name(int index, char *buf, server_t *serv,
     validate_number_of_player(conf, buf, serv, index);
 }
 
-void send_log_info(server_t *serveur, server_config_t *config)
+void send_log_info(serveur_t *serveur, server_config_t *config)
 {
     int client_fd = accept(serveur->server_fd, NULL, NULL);
     int index = find_index(serveur, client_fd - 1);

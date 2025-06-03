@@ -13,7 +13,6 @@ int generate_map(server_t *serv)
     int j = 0;
 
     serv->map_density = (float[]){0.5, 0.3, 0.15, 0.1, 0.05, 0.05, 0.01};
-
     serv->map = malloc(sizeof(tile_t) * serv->map_width * serv->map_height);
     if (!serv->map) {
         perror("Memory allocation failed for map");
@@ -29,25 +28,26 @@ int generate_map(server_t *serv)
     return EXIT_SUCCESS;
 }
 
-int dispatch_objects(server_t *serv)
+void dispatch_objects(server_t *serv)
 {
-    srand(time(NULL));
-    int rand_width;
-    int rand_height;
+    int rand_W = 0;
+    int rand_H = 0;
+    int obj_nbr = 0;
+    tile_t *tile = NULL;
 
+    srand(time(NULL));
     for (int i = 0; i < serv->map_height * serv->map_width; i++) {
-        rand_width = rand() % serv->map_width;
-        rand_height = rand() % serv->map_height;
+        rand_W = rand() % serv->map_width;
+        rand_H = rand() % serv->map_height;
     }
-    for (enum object_type i = 0; i < LAST_OBJECT; i++) {
-        int object_count = (serv->map_density[i] * serv->map_width * serv->map_height);
-        for (int j = 0; j < object_count; j++) {
-            rand_width = rand() % serv->map_width;
-            rand_height = rand() % serv->map_height;
-            tile_t *tile = &serv->map[rand_height * serv->map_width + rand_width];
-            tile->objects = realloc(tile->objects, sizeof(enum object_type) * (j + 1));
-            tile->objects[j] = i;
-            
+    for (enum obj_type i = 0; i < LAST_OBJECT; i++) {
+        obj_nbr = (serv->map_density[i] * serv->map_width * serv->map_height);
+        for (int j = 0; j < obj_nbr; j++) {
+            rand_W = rand() % serv->map_width;
+            rand_H = rand() % serv->map_height;
+            tile = &serv->map[rand_H * serv->map_width + rand_W];
+            tile->obj = realloc(tile->obj, sizeof(enum obj_type) * (j + 1));
+            tile->obj[j] = i;
         }
     }
 }

@@ -46,8 +46,8 @@ int main() {
 
 
     read_response(sock);
-    send_command(sock, "Epitech", 0);
-    send_command(sock, "\n", 0);
+    send_command(sock, "Epitech\n", 0);
+    // send_command(sock, "", 0);
     sleep(0.5);
     read_response(sock);
     sleep(1);

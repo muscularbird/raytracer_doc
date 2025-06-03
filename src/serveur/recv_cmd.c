@@ -7,34 +7,6 @@
 
 #include "../../include/serveur/my.h"
 
-
-char *extract_command(char *buffer)
-{
-    char *end = strstr(buffer, "\n");
-    size_t cmd_len = 0;
-    char *cmd = NULL;
-
-    if (!end)
-        return NULL;
-    cmd_len = end - buffer;
-    cmd = malloc(cmd_len + 1);
-    if (!cmd)
-        return NULL;
-    strncpy(cmd, buffer, cmd_len);
-    cmd[cmd_len] = '\0';
-    return cmd;
-}
-
-void shift_buffer(char *buffer)
-{
-    char *end = strstr(buffer, "\n");
-
-    if (!end)
-        return;
-    end += 1;
-    memmove(buffer, end, strlen(end) + 1);
-}
-
 static void dispatch_command(server_t *serveur, int ind, const char *cmd,
     server_config_t *config)
 {
@@ -57,12 +29,28 @@ static void dispatch_command(server_t *serveur, int ind, const char *cmd,
             serveur->players->players[ind].fd, cmd);
 }
 
+int find_team(char **cmd, server_t *serv, server_config_t *config, int index)
+{
+    if (!serv->players->players[index].is_loged) {
+        if (validate_log_info(*cmd, serv, config, index)) {
+            free(*cmd);
+            remove_client(serv, index);
+            return 1;
+        } else
+            serv->players->players[index].team_name = strdup(*cmd);
+        serv->players->players[index].is_loged = true;
+    } else
+        dispatch_command(serv, index, *cmd, config);
+    return 0;
+}
+
 static void see_cmd(server_t *serveur, int index, server_config_t *config)
 {
     char *cmd = extract_command(serveur->players->players[index].buff);
 
     if (cmd) {
-        dispatch_command(serveur, index, cmd, config);
+        if (find_team(&cmd, serveur, config, index))
+            return;
         free(cmd);
         shift_buffer(serveur->players->players[index].buff);
         see_cmd(serveur, index, config);

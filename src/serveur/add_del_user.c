@@ -65,16 +65,16 @@ static bool create_player(struct players *players, int fd)
 
     __players = realloc(players->players,
         sizeof(struct player) * (players->nplayers + 1));
-    if (__players == NULL) {
+    if (__players == NULL)
         return false;
-    }
     __players[players->nplayers] = (struct player) {
         .x = 0,
         .y = 0,
         .id = id,
         .fd = fd,
         .buff = {0},
-        .team_name = NULL
+        .team_name = NULL,
+        .is_loged = false
     };
     players->players = __players;
     players->nplayers++;

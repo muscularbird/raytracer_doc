@@ -36,7 +36,7 @@
     #define EXIT_SUCCESS 0
     #define BUFFER_SIZE 1024
     #define OK_CMD "ok\n"
-    #define KO_CMD "ko"
+    #define KO_CMD "ko\n"
 
 typedef struct server_config_s {
     int port;
@@ -99,6 +99,7 @@ struct player {
         int x;
     };
     int fd;
+    bool is_loged;
     unsigned short id;
     char *team_name;
     int nb_bad_cmd;
@@ -158,9 +159,13 @@ int start_server(server_config_t *config);
 int add_client(server_t *serv, int client_fd);
 int remove_client(server_t *serv, int index);
 int find_index(server_t *serveur, int id_client);
-void send_log_info(server_t *serveur, server_config_t *config);
+void send_log_info(server_t *serveur);
 void recv_from_cli(server_t *serveur, int index, server_config_t *config);
 int find_index_team(server_config_t *conf, const char *team_name);
+char *extract_command(char *buffer);
+void shift_buffer(char *buffer);
+int validate_log_info(const char *buf, server_t *serv,
+    server_config_t *conf, int index);
 // map handling
 int generate_map(server_t *serv);
 

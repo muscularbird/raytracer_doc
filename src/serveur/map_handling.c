@@ -22,7 +22,7 @@ int generate_map(server_t *serv)
         for (j = 0; j < serv->map_width; j++) {
             serv->map[i * serv->map_width + j].x = j;
             serv->map[i * serv->map_width + j].y = i;
-            serv->map[i * serv->map_width + j].objects = NULL;
+            serv->map[i * serv->map_width + j].obj = NULL;
         }
     }
     return EXIT_SUCCESS;

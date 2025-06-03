@@ -36,6 +36,7 @@
     #define EXIT_SUCCESS 0
     #define BUFFER_SIZE 1024
     #define OK_CMD "ok\n"
+    #define KO_CMD "ko"
 
 typedef struct server_config_s {
     int port;
@@ -100,6 +101,8 @@ struct player {
     int fd;
     unsigned short id;
     char *team_name;
+    int nb_bad_cmd;
+    int req_without_answer;
     int level;
     bool isGUI;
     char buff[BUFFER_SIZE];

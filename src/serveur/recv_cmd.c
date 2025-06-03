@@ -42,10 +42,19 @@ static void dispatch_command(server_t *serveur, int ind, const char *cmd,
         if (strncmp(cmd, command_table[i].name,
             strlen(command_table[i].name)) == 0) {
             command_table[i].func(serveur, ind, cmd, config);
+            serveur->players->players[ind].nb_bad_cmd = 0;
             return;
         }
     }
-    send(serveur->client_list.clients[ind].fd, "Ko\n", 3, MSG_NOSIGNAL);
+    send(serveur->client_list.clients[ind].fd, KO_CMD, 3, MSG_NOSIGNAL);
+    serveur->players->players[ind].nb_bad_cmd++;
+    if (serveur->players->players[ind].nb_bad_cmd >= 10) {
+        fprintf(stderr, "Client %d send to many bad request\n",
+            serveur->players->players[ind].fd);
+        remove_client(serveur, ind);
+    } else
+        fprintf(stderr, "Bad command from client %d: %s\n",
+            serveur->players->players[ind].fd, cmd);
 }
 
 static void see_cmd(server_t *serveur, int index, server_config_t *config)
@@ -57,8 +66,16 @@ static void see_cmd(server_t *serveur, int index, server_config_t *config)
         free(cmd);
         shift_buffer(serveur->players->players[index].buff);
         see_cmd(serveur, index, config);
-    } else
+        serveur->players->players[index].req_without_answer = 0;
+    } else {
+        serveur->players->players[index].req_without_answer++;
+        if (serveur->players->players[index].req_without_answer >= 10) {
+            fprintf(stderr, "Client %d send to many request without answer\n",
+                serveur->players->players[index].fd);
+            remove_client(serveur, index);
+        }
         return;
+    }
 }
 
 void recv_from_cli(server_t *serveur, int index, server_config_t *config)

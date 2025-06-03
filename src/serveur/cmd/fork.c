@@ -12,7 +12,6 @@ void cmd_fork(server_t *serv, int index, const char *cmd,
     server_config_t *conf)
 {
     int pos = find_index_team(conf, serv->players->players[index].team_name);
-    int result = conf->teams_count_max[pos];
 
     (void)cmd;
     conf->teams_count_max[pos]++;

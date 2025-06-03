@@ -39,4 +39,7 @@ def parse_args(argv):
     if args["-p"] is None or args["-n"] is None:
         raise Exception("mandatory values is missing")
     
+    if args["-n"] == "GRAPHIC":
+        raise Exception("This name is reserved for the client, please choose an other")
+    
     return args

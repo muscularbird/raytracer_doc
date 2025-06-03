@@ -1,0 +1,3 @@
+CRITICAL_FOOD_AMOUNT = 3
+
+

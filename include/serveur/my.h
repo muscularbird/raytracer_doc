@@ -161,7 +161,8 @@ int find_index(server_t *serveur, int id_client);
 void send_log_info(server_t *serveur, server_config_t *config);
 void recv_from_cli(server_t *serveur, int index, server_config_t *config);
 int find_index_team(server_config_t *conf, const char *team_name);
-
+// map handling
+int generate_map(server_t *serv);
 
 
 #endif /* !MY_H_ */

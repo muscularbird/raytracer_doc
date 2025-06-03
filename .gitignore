@@ -12,3 +12,4 @@ src/AI/__pycache__
 src/AI/tests/__pycache__
 src/AI/venv
 src/AI/tests/zappy_server
+coding-style-reports.log

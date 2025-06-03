@@ -8,7 +8,7 @@
 #include "../../../include/serveur/my.h"
 
 // do the move logic here
-void cmd_forward(serveur_t *serveur, int index, const char *cmd,
+void cmd_forward(server_t *serveur, int index, const char *cmd,
     server_config_t *config)
 {
     (void)cmd;
@@ -17,7 +17,7 @@ void cmd_forward(serveur_t *serveur, int index, const char *cmd,
 }
 
 // do the right turn logic here
-void cmd_right(serveur_t *serveur, int index, const char *cmd,
+void cmd_right(server_t *serveur, int index, const char *cmd,
     server_config_t *config)
 {
     (void)cmd;
@@ -26,7 +26,7 @@ void cmd_right(serveur_t *serveur, int index, const char *cmd,
 }
 
 // do the left turn logic here
-void cmd_left(serveur_t *serveur, int index, const char *cmd,
+void cmd_left(server_t *serveur, int index, const char *cmd,
     server_config_t *config)
 {
     (void)cmd;

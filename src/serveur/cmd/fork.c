@@ -8,7 +8,7 @@
 #include "../../../include/serveur/my.h"
 
 // do the fork logic here
-void cmd_fork(serveur_t *serveur, int index, const char *cmd,
+void cmd_fork(server_t *serveur, int index, const char *cmd,
     server_config_t *config)
 {
     (void)cmd;

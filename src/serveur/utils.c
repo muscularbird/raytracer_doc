@@ -7,7 +7,7 @@
 
 #include "../../include/serveur/my.h"
 
-int find_index(serveur_t *serveur, int id_client)
+int find_index(server_t *serveur, int id_client)
 {
     for (size_t i = 0; i < serveur->players->nplayers; i++) {
         if (serveur->players->players[i].fd == id_client)

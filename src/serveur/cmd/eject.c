@@ -8,7 +8,7 @@
 #include "../../../include/serveur/my.h"
 
 // do the eject logic here
-void cmd_eject(serveur_t *serveur, int index, const char *cmd,
+void cmd_eject(server_t *serveur, int index, const char *cmd,
     server_config_t *config)
 {
     (void)cmd;

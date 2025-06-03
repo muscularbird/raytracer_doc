@@ -35,7 +35,7 @@ void shift_buffer(char *buffer)
     memmove(buffer, end, strlen(end) + 1);
 }
 
-static void dispatch_command(serveur_t *serveur, int ind, const char *cmd,
+static void dispatch_command(server_t *serveur, int ind, const char *cmd,
     server_config_t *config)
 {
     for (int i = 0; command_table[i].name != NULL; i++) {
@@ -48,7 +48,7 @@ static void dispatch_command(serveur_t *serveur, int ind, const char *cmd,
     send(serveur->client_list.clients[ind].fd, "Ko\n", 3, MSG_NOSIGNAL);
 }
 
-static void see_cmd(serveur_t *serveur, int index, server_config_t *config)
+static void see_cmd(server_t *serveur, int index, server_config_t *config)
 {
     char *cmd = extract_command(serveur->players->players[index].buff);
 
@@ -61,7 +61,7 @@ static void see_cmd(serveur_t *serveur, int index, server_config_t *config)
         return;
 }
 
-void recv_from_cli(serveur_t *serveur, int index, server_config_t *config)
+void recv_from_cli(server_t *serveur, int index, server_config_t *config)
 {
     char buf[BUFFER_SIZE] = {0};
     int bytes_read = recv(serveur->client_list.clients[index].fd, buf,

@@ -8,7 +8,7 @@
 #include "../../../include/serveur/my.h"
 
 // do the broadcast logic here
-void cmd_broadcast(serveur_t *serveur, int index, const char *cmd,
+void cmd_broadcast(server_t *serveur, int index, const char *cmd,
     server_config_t *config)
 {
     (void)cmd;

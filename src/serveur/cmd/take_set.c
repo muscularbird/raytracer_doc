@@ -8,7 +8,7 @@
 #include "../../../include/serveur/my.h"
 
 // do the take logic here
-void cmd_take(serveur_t *serveur, int index, const char *cmd,
+void cmd_take(server_t *serveur, int index, const char *cmd,
     server_config_t *config)
 {
     (void)cmd;
@@ -18,7 +18,7 @@ void cmd_take(serveur_t *serveur, int index, const char *cmd,
 }
 
 // do the set logic here
-void cmd_set(serveur_t *serveur, int index, const char *cmd,
+void cmd_set(server_t *serveur, int index, const char *cmd,
     server_config_t *config)
 {
     (void)cmd;

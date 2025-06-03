@@ -43,7 +43,7 @@ static void sighandler(int sig)
         *run_serv = 0;
 }
 
-static void dispatch(serveur_t *serveur, int i, server_config_t *config)
+static void dispatch(server_t *serveur, int i, server_config_t *config)
 {
     client_list_t *cli_list = &serveur->client_list;
 
@@ -55,7 +55,7 @@ static void dispatch(serveur_t *serveur, int i, server_config_t *config)
     }
 }
 
-static void server_shutdown(client_list_t *cli_list, serveur_t *serveur)
+static void server_shutdown(client_list_t *cli_list, server_t *serveur)
 {
     printf("\n\n---------- Server shutting down... ----------\n");
     for (int i = 0; i < cli_list->count; i++) {
@@ -67,7 +67,7 @@ static void server_shutdown(client_list_t *cli_list, serveur_t *serveur)
     free(cli_list->clients);
 }
 
-static int run_serv(serveur_t *serveur, server_config_t *config)
+static int run_serv(server_t *serveur, server_config_t *config)
 {
     client_list_t *cli_list = &serveur->client_list;
 
@@ -89,7 +89,7 @@ static int run_serv(serveur_t *serveur, server_config_t *config)
 
 int start_server(server_config_t *config)
 {
-    serveur_t server = {0};
+    server_t server = {0};
 
     server.server_fd = init_server(config->port);
     if (server.server_fd < 0)

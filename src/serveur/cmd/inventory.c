@@ -8,7 +8,7 @@
 #include "../../../include/serveur/my.h"
 
 // do the inventory logic here
-void cmd_inventory(serveur_t *serveur, int index, const char *cmd,
+void cmd_inventory(server_t *serveur, int index, const char *cmd,
     server_config_t *config)
 {
     (void)cmd;

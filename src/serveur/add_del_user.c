@@ -33,7 +33,7 @@ static int do_proper_logout(int fd, int index, client_list_t *cli_list)
     return 1;
 }
 
-int remove_client(serveur_t *serv, int index)
+int remove_client(server_t *serv, int index)
 {
     struct players *players = serv->players;
     int fd = serv->client_list.clients[index].fd;
@@ -82,7 +82,7 @@ static bool create_player(struct players *players, int fd)
     return true;
 }
 
-int add_client(serveur_t *serv, int client_fd)
+int add_client(server_t *serv, int client_fd)
 {
     client_list_t *cli_list = &serv->client_list;
 

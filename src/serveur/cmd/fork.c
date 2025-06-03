@@ -8,12 +8,13 @@
 #include "../../../include/serveur/my.h"
 
 // do the fork logic here
-void cmd_fork(server_t *serveur, int index, const char *cmd,
-    server_config_t *config)
+void cmd_fork(server_t *serv, int index, const char *cmd,
+    server_config_t *conf)
 {
+    int pos = find_index_team(conf, serv->players->players[index].team_name);
+    int result = conf->teams_count_max[pos];
+
     (void)cmd;
-    (void)config;
-    printf("Fork command received from client %d\n",
-        serveur->client_list.clients[index].fd);
-    send(serveur->client_list.clients[index].fd, OK_CMD, 3, MSG_NOSIGNAL);
+    conf->teams_count_max[pos]++;
+    send(serv->client_list.clients[index].fd, OK_CMD, 3, MSG_NOSIGNAL);
 }

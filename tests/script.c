@@ -52,7 +52,7 @@ int main() {
     read_response(sock);
     sleep(1);
     sleep(1);
-    send_command(sock, "Connect_nbr\n", 1);
+    send_command(sock, "Fork\n", 1);
     sleep(2);
     printf("finish\n");
 

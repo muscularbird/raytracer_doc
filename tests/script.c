@@ -50,23 +50,7 @@ int main() {
     sleep(0.5);
     read_response(sock);
     sleep(1);
-    send_command(sock, "C", 0);
-    sleep(1);
-    send_command(sock, "o", 0);
-    sleep(1);
-    send_command(sock, "n", 0);
-    sleep(1);
-    send_command(sock, "n", 0);
-    sleep(1);
-    send_command(sock, "e", 0);
-    sleep(1);
-    send_command(sock, "c", 0);
-    sleep(1);
-    send_command(sock, "t", 0);
-    sleep(1);
-    send_command(sock, "_nbr", 0);
-    sleep(1);
-    send_command(sock, "\n", 1);
+    send_command(sock, "Connect_nbr\nFork\n", 1);
     sleep(2);
     printf("finish\n");
 

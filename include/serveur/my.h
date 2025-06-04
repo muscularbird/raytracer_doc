@@ -105,6 +105,7 @@ struct player {
     int nb_bad_cmd;
     int req_without_answer;
     int level;
+    int time_unit;
     bool isGUI;
     char buff[BUFFER_SIZE];
     inventory_t inventory;
@@ -166,6 +167,7 @@ char *extract_command(char *buffer);
 void shift_buffer(char *buffer);
 int validate_log_info(const char *buf, server_t *serv,
     server_config_t *conf, int index);
+bool check_food_death(server_t *serveur, int i);
 // map handling
 int generate_map(server_t *serv);
 

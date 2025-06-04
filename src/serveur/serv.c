@@ -75,7 +75,7 @@ static int run_serv(server_t *serveur, server_config_t *config)
     add_client(serveur, serveur->server_fd);
     signal(SIGINT, sighandler);
     while (*get_ptr_serv()) {
-        if (poll(cli_list->clients, cli_list->count, -1) < 0
+        if (poll(cli_list->clients, cli_list->count, 0) < 0
             && errno != EINTR) {
             free(cli_list->clients);
             return 1 + 0 * fprintf(stderr, "Error poll\n");

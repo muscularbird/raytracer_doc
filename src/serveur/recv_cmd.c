@@ -31,6 +31,7 @@ static void dispatch_command(server_t *serveur, int ind, const char *cmd,
 
 int find_team(char **cmd, server_t *serv, server_config_t *config, int index)
 {
+    printf("%s\n", *cmd);
     if (!serv->players->players[index].is_loged) {
         if (validate_log_info(*cmd, serv, config, index)) {
             free(*cmd);
@@ -44,6 +45,7 @@ int find_team(char **cmd, server_t *serv, server_config_t *config, int index)
     return 0;
 }
 
+// see_cmd(serveur, index, config);
 static void see_cmd(server_t *serveur, int index, server_config_t *config)
 {
     char *cmd = extract_command(serveur->players->players[index].buff);
@@ -53,7 +55,6 @@ static void see_cmd(server_t *serveur, int index, server_config_t *config)
             return;
         free(cmd);
         shift_buffer(serveur->players->players[index].buff);
-        see_cmd(serveur, index, config);
         serveur->players->players[index].req_without_answer = 0;
     } else {
         serveur->players->players[index].req_without_answer++;

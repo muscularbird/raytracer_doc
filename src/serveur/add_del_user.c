@@ -58,6 +58,20 @@ int remove_client(server_t *serv, int index)
 }
 
 // ------------------- ADD CLIENT -------------------
+static void init_player(struct player *__players, int index, int id, int fd)
+{
+    __players[index] = (struct player) {
+        .x = 0,
+        .y = 0,
+        .id = id,
+        .fd = fd,
+        .buff = {0},
+        .team_name = NULL,
+        .is_loged = false,
+        .inventory.food = 10
+    };
+}
+
 static bool create_player(struct players *players, int fd)
 {
     static unsigned short id = 1;
@@ -67,16 +81,8 @@ static bool create_player(struct players *players, int fd)
         sizeof(struct player) * (players->nplayers + 1));
     if (__players == NULL)
         return false;
-    __players[players->nplayers] = (struct player) {
-        .x = 0,
-        .y = 0,
-        .id = id,
-        .fd = fd,
-        .buff = {0},
-        .team_name = NULL,
-        .is_loged = false
-    };
     players->players = __players;
+    init_player(players->players, players->nplayers, id, fd);
     players->nplayers++;
     id++;
     return true;

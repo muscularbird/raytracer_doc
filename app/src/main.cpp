@@ -1,6 +1,6 @@
 #include "../include/include.hpp"
 #include "../include/core/Game.hpp"
-#include "../include/logs/Logger.hpp"
+#include "../include/logger/Logger.hpp"
 
 void signal_handler(int signal) {
     if (signal == SIGINT) {

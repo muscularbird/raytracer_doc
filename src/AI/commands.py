@@ -20,7 +20,14 @@ def look(conn: Connection):
     tiles = [tile.strip() for tile in raw.split(',')]
     parsed = [tile.split() if tile else [] for tile in tiles]
     
-    return parsed
+    index = 0
+    result = []
+    
+    for tile in parsed:
+        result.append({index: tile})
+        index += 1
+    
+    return result
     
     
 def inventory(conn: Connection):

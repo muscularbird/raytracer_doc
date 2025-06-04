@@ -55,6 +55,7 @@ class Brain:
             logging.info(inv)
             
             if response is None or inv is None:
+                print("break")
                 break
             
             food_nb = self.food_amount(inv)
@@ -69,5 +70,4 @@ class Brain:
             else:
                 self.state = "explore"
             
-            print(food_nb)
-            print(self.nav.get_tile_map(response))
+            self.nav.choose_direction(response)

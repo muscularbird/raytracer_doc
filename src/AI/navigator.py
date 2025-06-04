@@ -10,11 +10,10 @@ class Navigator:
         self.conn: Connection = conn
         self.level: int = level
         
-    def get_tile_map(self, look):
-        vision = []
-        index = 0
-        
-        for tile in look:
-            vision.append({index: tile})
-            index += 1
-        return vision
+    def find_object(self, vision: list, object: str="food"):
+        for tile in vision:
+            if object in tile:
+                print("oui")
+    
+    def choose_direction(self, vision):
+        self.find_object(vision)

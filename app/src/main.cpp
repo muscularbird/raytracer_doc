@@ -1,4 +1,5 @@
 #include "../include/include.hpp"
+#include "../include/core/Game.hpp"
 
 void signal_handler(int signal) {
     if (signal == SIGINT) {
@@ -13,7 +14,9 @@ int main(const int argc, const char *const av[], const char *const env[])
     signal(SIGINT, signal_handler);
 
     try {
-        std::cerr << "Erreur.\n" << std::endl;
+        Game game;
+        game.run(); // Gère boucle raylib + réseau + draw
+        return 0;
     } catch (...) {
         std::cerr << "Erreur.\n" << std::endl;
         return 84;

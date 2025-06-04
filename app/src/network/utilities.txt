@@ -1,0 +1,1 @@
+Communication réseau + parsing messages serveur

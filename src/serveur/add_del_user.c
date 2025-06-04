@@ -63,12 +63,14 @@ static void init_player(struct player *__players, int index, int id, int fd)
     __players[index] = (struct player) {
         .x = 0,
         .y = 0,
+        .direction = 'N',
         .id = id,
         .fd = fd,
         .buff = {0},
         .team_name = NULL,
         .is_loged = false,
-        .inventory.food = 10
+        .inventory.food = 10,
+        .next_action = time(NULL)
     };
 }
 

@@ -47,6 +47,11 @@ clean:
 fclean: clean
 	rm -f $(BINARY_serv) $(BINARY_client) $(BINARY_ai)
 
+serv_test:
+	@echo "Running server tests..."
+	@gcc ./tests/script.c
+	@./a.out
+
 re: fclean all
 
 .PHONY: all clean fclean re

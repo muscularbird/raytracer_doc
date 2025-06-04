@@ -51,8 +51,11 @@ static void dispatch(server_t *serveur, int i, server_config_t *config)
         if (cli_list->clients[i].fd == serveur->server_fd)
             send_log_info(serveur);
         else
-            recv_from_cli(serveur, i, config);
+            recv_from_cli(serveur, i);
     }
+    if (strlen(serveur->players->players[i].buff) > 0 && time(NULL) >=
+    serveur->players->players[i].next_action)
+        see_cmd(serveur, i, config);
 }
 
 static void server_shutdown(client_list_t *cli_list, server_t *serveur)

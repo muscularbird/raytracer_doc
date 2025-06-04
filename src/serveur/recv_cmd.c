@@ -31,7 +31,6 @@ static void dispatch_command(server_t *serveur, int ind, const char *cmd,
 
 int find_team(char **cmd, server_t *serv, server_config_t *config, int index)
 {
-    printf("%s\n", *cmd);
     if (!serv->players->players[index].is_loged) {
         if (validate_log_info(*cmd, serv, config, index)) {
             free(*cmd);
@@ -46,7 +45,7 @@ int find_team(char **cmd, server_t *serv, server_config_t *config, int index)
 }
 
 // see_cmd(serveur, index, config);
-static void see_cmd(server_t *serveur, int index, server_config_t *config)
+void see_cmd(server_t *serveur, int index, server_config_t *config)
 {
     char *cmd = extract_command(serveur->players->players[index].buff);
 
@@ -67,7 +66,7 @@ static void see_cmd(server_t *serveur, int index, server_config_t *config)
     }
 }
 
-void recv_from_cli(server_t *serveur, int index, server_config_t *config)
+void recv_from_cli(server_t *serveur, int index)
 {
     char buf[BUFFER_SIZE] = {0};
     int bytes_read = recv(serveur->client_list.clients[index].fd, buf,
@@ -78,5 +77,4 @@ void recv_from_cli(server_t *serveur, int index, server_config_t *config)
     buf[bytes_read] = '\0';
     strncat(serveur->players->players[index].buff, buf,
         BUFFER_SIZE - strlen(serveur->players->players[index].buff) - 1);
-    see_cmd(serveur, index, config);
 }

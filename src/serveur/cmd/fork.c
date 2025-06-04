@@ -20,6 +20,8 @@ void cmd_fork(server_t *serv, int index, const char *cmd,
         remove_client(serv, index);
         return;
     }
+    serv->players->players[index].next_action = time(NULL) +
+    (time_t)(7.0 / (double)conf->freq);
     conf->teams_count_max[pos]++;
     send(serv->client_list.clients[index].fd, OK_CMD, 3, MSG_NOSIGNAL);
 }

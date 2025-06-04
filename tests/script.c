@@ -50,10 +50,10 @@ int main() {
     sleep(0.5);
     read_response(sock);
     sleep(1);
-    send_command(sock, "Connect_nbr\nFork\n", 1);
-    sleep(2);
+    send_command(sock, "Inventory\nConnect_nbr\n", 1);
+    // read_response(sock);
+    sleep(20);
     printf("finish\n");
-
 }
 
 

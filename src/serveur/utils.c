@@ -59,9 +59,6 @@ bool check_food_death(server_t *serveur, int i)
     if (player->time_unit <= 0 && player->inventory.food > 0) {
         player->inventory.food -= 1;
         player->time_unit += 126;
-        printf("Player %d from team %s has lost 1 food unit."
-            "Remaining food: %d\n",
-            player->fd, player->team_name, player->inventory.food);
         return false;
     }
     if (player->inventory.food == 0 && player->time_unit <= 0) {

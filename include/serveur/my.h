@@ -97,6 +97,7 @@ struct player {
     struct {
         int y;
         int x;
+        char direction;
     };
     int fd;
     bool is_loged;
@@ -106,6 +107,7 @@ struct player {
     int req_without_answer;
     int level;
     int time_unit;
+    time_t next_action;
     bool isGUI;
     char buff[BUFFER_SIZE];
     inventory_t inventory;
@@ -161,13 +163,14 @@ int add_client(server_t *serv, int client_fd);
 int remove_client(server_t *serv, int index);
 int find_index(server_t *serveur, int id_client);
 void send_log_info(server_t *serveur);
-void recv_from_cli(server_t *serveur, int index, server_config_t *config);
+void recv_from_cli(server_t *serveur, int index);
 int find_index_team(server_config_t *conf, const char *team_name);
 char *extract_command(char *buffer);
 void shift_buffer(char *buffer);
 int validate_log_info(const char *buf, server_t *serv,
     server_config_t *conf, int index);
 bool check_food_death(server_t *serveur, int i);
+void see_cmd(server_t *serveur, int index, server_config_t *config);
 // map handling
 int generate_map(server_t *serv);
 

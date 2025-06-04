@@ -59,3 +59,22 @@ cd zappy_mirroring
 ```bash
 git submodule update --init --recursive
 ```
+installez raylib:
+```bash
+cd raylib
+```
+```bash
+mkdir build && cd build
+```
+```bash
+cmake -DBUILD_SHARED_LIBS=ON ..
+```
+```bash
+make
+```
+```bash
+sudo make install
+```
+```bash
+sudo ldconfig && ldconfig -p | grep raylib
+```

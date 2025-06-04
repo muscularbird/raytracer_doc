@@ -12,13 +12,14 @@ static bool validate_nb_players(server_config_t *conf, int index,
 {
     char cli_s[48] = {0};
     int client_fd = serv->players->players[index].fd;
+    int pos = find_index_team(conf, buf);
 
-    if (conf->teams_count_connect[index] + 1 > conf->teams_count_max[index]) {
+    if (conf->teams_count_connect[pos] == conf->teams_count_max[pos]) {
         printf("This teams is already full %d: %s\n", client_fd, buf);
         send(client_fd, "KO\n", 3, MSG_NOSIGNAL);
         return true;
     }
-    conf->teams_count_connect[index]++;
+    conf->teams_count_connect[pos]++;
     sprintf(cli_s, "%d\n%d %d\n", conf->client_nb, conf->width, conf->height);
     send(client_fd, cli_s, strlen(cli_s), MSG_NOSIGNAL);
     return false;

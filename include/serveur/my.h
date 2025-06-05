@@ -80,13 +80,12 @@ typedef struct tile_s {
     int x;
     int y;
     enum obj_type* obj;
-    struct object_s *next;
 } tile_t;
 
 typedef struct server_s {
     int server_fd;
     struct players *players;
-    tile_t *map;
+    tile_t **map;
     float *map_density;
     int map_width;
     int map_height;

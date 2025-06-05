@@ -79,6 +79,16 @@ void print_map(server_t *serv, server_config_t *config)
     }
 }
 
+static bool place_on_map(server_t *serv, server_config_t *config, int i)
+{
+    for (int j = 0; j < config->width; j++) {
+        serv->map[i][j].ressources = calloc(sizeof(int), LAST_OBJECT);
+        if (!serv->map[i][j].ressources)
+            return true;
+    }
+    return false;
+}
+
 int generate_map(server_t *serv, server_config_t *config)
 {
     serv->map = calloc(sizeof(tile_t *), config->height + 1);
@@ -90,11 +100,8 @@ int generate_map(server_t *serv, server_config_t *config)
             return EXIT_FAIL;
     }
     for (int i = 0; i < config->height; i++) {
-        for (int j = 0; j < config->width; j++) {
-            serv->map[i][j].ressources = calloc(sizeof(int), LAST_OBJECT);
-            if (!serv->map[i][j].ressources)
-                return EXIT_FAIL;
-        }
+        if (place_on_map(serv, config, i))
+            return EXIT_FAIL;
     }
     dispatch_objects(serv, config);
     if (config->debug)

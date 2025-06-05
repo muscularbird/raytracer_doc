@@ -133,8 +133,12 @@ int start_server(server_config_t *config)
         return 1;
     generate_map(&server, config);
     run_serv(&server, config);
-    for (int i = 0; i < config->height; i++)
-        free(server.map[i]);
+    for (int y = 0; y < config->height; y++) {
+        for (int x = 0; x < config->width; x++) {
+            free(server.map[y][x].ressources);
+        }
+        free(server.map[y]);
+    }
     free(server.map);
     return 0;
 }

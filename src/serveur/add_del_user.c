@@ -79,7 +79,19 @@ static void init_player(struct player *__players, int index, int id, int fd)
     };
 }
 
-static bool create_player(struct players *players, int fd)
+static void init_pos_player(struct player *players, int ind,
+    server_config_t *conf)
+{
+    char directions[] = {'N', 'S', 'E', 'W'};
+    int chosen_direction = rand() % 4;
+
+    players[ind].x = rand() % conf->width;
+    players[ind].y = rand() % conf->height;
+    players[ind].direction = directions[chosen_direction];
+}
+
+static bool create_player(struct players *players, int fd,
+    server_config_t *conf)
 {
     static unsigned short id = 1;
     struct player *__players;
@@ -91,11 +103,28 @@ static bool create_player(struct players *players, int fd)
     players->players = __players;
     init_player(players->players, players->nplayers, id, fd);
     players->nplayers++;
+    init_pos_player(players->players, players->nplayers - 1, conf);
     id++;
     return true;
 }
 
-int add_client(server_t *serv, int client_fd)
+void print_player(const struct player *p)
+{
+    printf("Player {\n");
+    printf("  id: %d\n", p->id);
+    printf("  fd: %d\n", p->fd);
+    printf("  x: %d\n", p->x);
+    printf("  y: %d\n", p->y);
+    printf("  direction: %c\n", p->direction);
+    printf("  team_name: %s\n", p->team_name ? p->team_name : "NULL");
+    printf("  is_loged: %s\n", p->is_loged ? "true" : "false");
+    printf("  inventory.food: %d\n", p->inventory.food);
+    printf("  next_action: %ld\n", (long)p->next_action);
+    printf("  buff: \"%s\"\n", p->buff);
+    printf("}\n");
+}
+
+int add_client(server_t *serv, int client_fd, server_config_t *config)
 {
     client_list_t *cli_list = &serv->client_list;
 
@@ -107,7 +136,11 @@ int add_client(server_t *serv, int client_fd)
     cli_list->clients[cli_list->count].events = POLLIN;
     cli_list->clients[cli_list->count].revents = 0;
     cli_list->count++;
-    create_player(serv->players, client_fd);
-    printf("230 -> User %d connected\n", client_fd);
+    create_player(serv->players, client_fd, config);
+    if (client_fd != 3) {
+        if (config->debug)
+            print_player(&serv->players->players[serv->players->nplayers - 1]);
+        printf("230 -> User %d connected\n", client_fd);
+    }
     return 0;
 }

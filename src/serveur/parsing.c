@@ -77,6 +77,11 @@ bool parse_all_flag(char **av, server_config_t *config, int *i)
     } else if (av[*i] && strcmp(av[*i], "-n") == 0) {
         error = flag_n(i, av, config);
     }
+    if (av[*i] && av[*i + 1] && strcmp(av[*i], "-debug") == 0) {
+        config->debug = true;
+        *i += 2;
+        error = false;
+    }
     if (error)
         return true + 0 * fprintf(stderr, "Invalid argument:\n");
     return false;
@@ -101,6 +106,7 @@ bool parsing(char **av, server_config_t *config)
 {
     int i = 1;
 
+    config->debug = false;
     while (av[i]) {
         if (parse_all_flag(av, config, &i))
             return true;

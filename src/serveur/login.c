@@ -47,7 +47,7 @@ int validate_log_info(const char *buf, server_t *serv,
     return 0;
 }
 
-void send_log_info(server_t *serveur)
+void send_log_info(server_t *serveur, server_config_t *config)
 {
     int client_fd = accept(serveur->server_fd, NULL, NULL);
     int index = find_index(serveur, client_fd - 1);
@@ -60,6 +60,6 @@ void send_log_info(server_t *serveur)
         close(client_fd);
         return;
     }
-    add_client(serveur, client_fd);
+    add_client(serveur, client_fd, config);
     send(client_fd, "WELCOME\n", 9, MSG_NOSIGNAL);
 }

@@ -9,8 +9,8 @@
 
 int second_for(enum obj_type i, server_t *serv, int object_count)
 {
-    int rand_width;
-    int rand_height;
+    int rand_width = 0;
+    int rand_height = 0;
     tile_t *tile;
 
     for (int j = 0; j < object_count; j++) {
@@ -59,7 +59,8 @@ int generate_map(server_t *serv)
         for (int j = 0; j < serv->map_width; j++) {
             serv->map[i * serv->map_height][j].x = j;
             serv->map[i * serv->map_height][j].y = i;
-            serv->map[i * serv->map_height][j].obj = malloc(sizeof(enum obj_type) *1);
+            serv->map[i * serv->map_height][j].obj =
+            malloc(sizeof(enum obj_type) * 1);
         }
     }
     dispatch_objects(serv);

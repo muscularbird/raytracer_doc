@@ -48,6 +48,7 @@ typedef struct server_config_s {
     int *teams_count_connect;
     int client_nb;
     int freq;
+    bool debug;
 } server_config_t;
 
 typedef struct inventory_s {
@@ -158,10 +159,10 @@ static const command_entry_t command_table[] = {
 
 bool parsing(char **av, server_config_t *config);
 int start_server(server_config_t *config);
-int add_client(server_t *serv, int client_fd);
+int add_client(server_t *serv, int client_fd, server_config_t *config);
 int remove_client(server_t *serv, int index, server_config_t *config);
 int find_index(server_t *serveur, int id_client);
-void send_log_info(server_t *serveur);
+void send_log_info(server_t *serveur, server_config_t *config);
 void recv_from_cli(server_t *serveur, int index, server_config_t *config);
 int find_index_team(server_config_t *conf, const char *team_name);
 char *extract_command(char *buffer);

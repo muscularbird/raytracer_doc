@@ -53,6 +53,7 @@ static bool init_config(server_config_t *config)
     config->port = 4242;
     config->width = 10;
     config->height = 10;
+    config->debug = true;
     config->teams = calloc(4, sizeof(char *));
     if (!config->teams) {
         perror("Failed to allocate memory for teams");
@@ -78,7 +79,7 @@ bool fill_struct(server_config_t *config, char **av)
     return 0;
 }
 
-static void debug(server_config_t *config)
+static void print_parsing(server_config_t *config)
 {
     printf("Port: %d\n", config->port);
     printf("Width: %d\n", config->width);
@@ -107,7 +108,8 @@ int main(int ac, char **av)
         free_data(&config);
         return EXIT_FAIL;
     }
-    debug(&config);
+    if (config.debug)
+        print_parsing(&config);
     start_server(&config);
     free_data(&config);
     return EXIT_SUCCESS;

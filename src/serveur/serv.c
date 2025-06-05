@@ -49,7 +49,7 @@ static void dispatch(server_t *serveur, int i, server_config_t *config)
 
     if (cli_list->clients[i].revents & POLLIN) {
         if (cli_list->clients[i].fd == serveur->server_fd)
-            send_log_info(serveur);
+            send_log_info(serveur, config);
         else
             recv_from_cli(serveur, i, config);
     }
@@ -75,7 +75,7 @@ static int run_serv(server_t *serveur, server_config_t *config)
     client_list_t *cli_list = &serveur->client_list;
 
     serveur->players = calloc(sizeof(struct players), 1);
-    add_client(serveur, serveur->server_fd);
+    add_client(serveur, serveur->server_fd, config);
     signal(SIGINT, sighandler);
     while (*get_ptr_serv()) {
         if (poll(cli_list->clients, cli_list->count, 0) < 0

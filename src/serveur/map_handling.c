@@ -60,16 +60,21 @@ void dispatch_objects(server_t *serv, server_config_t *config)
     }
 }
 
+static void display_item_of_tile(server_t *serv, int i, int j)
+{
+    for (int k = 0; k < LAST_OBJECT; k++) {
+        printf("Tile (%d, %d) has %d of type %d\n",
+            j, i, serv->map[i][j].ressources[k], k);
+    }
+}
+
 void print_map(server_t *serv, server_config_t *config)
 {
     printf("Map (%d x %d):\n", config->width, config->height);
     for (int i = 0; i < config->height; i++) {
         for (int j = 0; j < config->width; j++) {
             printf("Initializing tile at (%d, %d)\n", j, i);
-            for (int k = 0; k < LAST_OBJECT; k++) {
-                printf("Tile (%d, %d) has %d of type %d\n",
-                    j, i, serv->map[i][j].ressources[k], k);
-            }
+            display_item_of_tile(serv, i, j);
         }
     }
 }

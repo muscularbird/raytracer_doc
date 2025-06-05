@@ -83,17 +83,7 @@ typedef struct tile_s {
     enum obj_type* obj;
 } tile_t;
 
-typedef struct server_s {
-    int server_fd;
-    struct players *players;
-    tile_t **map;
-    float *map_density;
-    int map_width;
-    int map_height;
-    client_list_t client_list;
-} server_t;
-
-struct player {
+typedef struct player_s {
     struct {
         int y;
         int x;
@@ -111,14 +101,22 @@ struct player {
     bool isGUI;
     char buff[BUFFER_SIZE];
     inventory_t inventory;
-};
+} player_t;
 
-
-struct players {
-    struct player *players;
+typedef struct players_s {
+    player_t *players;
     size_t nplayers;
-};
+} players_t;
 
+typedef struct server_s {
+    int server_fd;
+    players_t *players;
+    tile_t **map;
+    float *map_density;
+    int map_width;
+    int map_height;
+    client_list_t client_list;
+} server_t;
 
 typedef void (*command_func_t)(server_t *, int, const char *,
     server_config_t *);

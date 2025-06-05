@@ -74,7 +74,7 @@ static int run_serv(server_t *serveur, server_config_t *config)
 {
     client_list_t *cli_list = &serveur->client_list;
 
-    serveur->players = calloc(sizeof(struct players), 1);
+    serveur->players = calloc(sizeof(players_t), 1);
     add_client(serveur, serveur->server_fd, config);
     signal(SIGINT, sighandler);
     while (*get_ptr_serv()) {

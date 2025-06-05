@@ -54,7 +54,7 @@ void shift_buffer(char *buffer)
 
 bool check_food_death(server_t *serveur, int i)
 {
-    struct player *player = &serveur->players->players[i];
+    player_t *player = &serveur->players->players[i];
 
     if (player->time_unit <= 0 && player->inventory.food > 0) {
         player->inventory.food -= 1;

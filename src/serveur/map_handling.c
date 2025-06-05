@@ -46,15 +46,11 @@ int generate_map(server_t *serv)
     serv->map = malloc(sizeof(tile_t *) * serv->map_height);
     for (int i = 0; i < serv->map_height; i++) {
         serv->map[i] = malloc(sizeof(tile_t) * serv->map_width);
-        if (!serv->map[i]) {
-            perror("Memory allocation failed for map row");
+        if (!serv->map[i])
             return EXIT_FAIL;
-        }
     }
-    if (!serv->map) {
-        perror("Memory allocation failed for map");
+    if (!serv->map)
         return EXIT_FAIL;
-    }
     for (int i = 0; i < serv->map_height; i++) {
         for (int j = 0; j < serv->map_width; j++) {
             serv->map[i * serv->map_height][j].x = j;

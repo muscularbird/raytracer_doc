@@ -8,7 +8,7 @@
 #include "../../include/serveur/my.h"
 
 // ------------------- REMOVE CLIENT -------------------
-static void free_player(struct players *player, int ind, server_config_t *conf)
+static void free_player(players_t *player, int ind, server_config_t *conf)
 {
     int pos_team = 0;
 
@@ -40,7 +40,7 @@ static int do_proper_logout(int fd, int index, client_list_t *cli_list)
 
 int remove_client(server_t *serv, int index, server_config_t *config)
 {
-    struct players *players = serv->players;
+    players_t *players = serv->players;
     int fd = serv->client_list.clients[index].fd;
     int player_index = find_index(serv, fd);
 
@@ -52,7 +52,7 @@ int remove_client(server_t *serv, int index, server_config_t *config)
     players->nplayers--;
     if (players->nplayers > 0) {
         players->players = realloc(players->players, players->nplayers *
-            sizeof(struct player));
+            sizeof(player_t));
         if (!players->players)
             return 0 * fprintf(stderr, "Erreur realloc players\n");
     } else {
@@ -63,9 +63,9 @@ int remove_client(server_t *serv, int index, server_config_t *config)
 }
 
 // ------------------- ADD CLIENT -------------------
-static void init_player(struct player *__players, int index, int id, int fd)
+static void init_player(player_t *__players, int index, int id, int fd)
 {
-    __players[index] = (struct player) {
+    __players[index] = (player_t) {
         .x = 0,
         .y = 0,
         .direction = 'N',
@@ -79,7 +79,7 @@ static void init_player(struct player *__players, int index, int id, int fd)
     };
 }
 
-static void init_pos_player(struct player *players, int ind,
+static void init_pos_player(player_t *players, int ind,
     server_config_t *conf)
 {
     char directions[] = {'N', 'S', 'E', 'W'};
@@ -90,14 +90,14 @@ static void init_pos_player(struct player *players, int ind,
     players[ind].direction = directions[chosen_direction];
 }
 
-static bool create_player(struct players *players, int fd,
+static bool create_player(players_t *players, int fd,
     server_config_t *conf)
 {
     static unsigned short id = 1;
-    struct player *__players;
+    player_t *__players;
 
     __players = realloc(players->players,
-        sizeof(struct player) * (players->nplayers + 1));
+        sizeof(player_t) * (players->nplayers + 1));
     if (__players == NULL)
         return false;
     players->players = __players;
@@ -108,7 +108,7 @@ static bool create_player(struct players *players, int fd,
     return true;
 }
 
-void print_player(const struct player *p)
+void print_player(const player_t *p)
 {
     printf("Player {\n");
     printf("  id: %d\n", p->id);

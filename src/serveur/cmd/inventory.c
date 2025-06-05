@@ -18,7 +18,7 @@ void cmd_inventory(server_t *serv, int ind, const char *cmd,
     serv->players->players[ind].time_unit -= 1;
     if (check_food_death(serv, ind)) {
         send(serv->client_list.clients[ind].fd, "dead\n", 6, MSG_NOSIGNAL);
-        remove_client(serv, ind);
+        remove_client(serv, ind, conf);
         return;
     }
     serv->players->players[ind].next_action = time(NULL) +

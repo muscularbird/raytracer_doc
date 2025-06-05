@@ -17,7 +17,7 @@ void cmd_fork(server_t *serv, int index, const char *cmd,
     serv->players->players[index].time_unit -= 42;
     if (check_food_death(serv, index)) {
         send(serv->client_list.clients[index].fd, "dead\n", 6, MSG_NOSIGNAL);
-        remove_client(serv, index);
+        remove_client(serv, index, conf);
         return;
     }
     serv->players->players[index].next_action = time(NULL) +

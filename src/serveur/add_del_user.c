@@ -8,10 +8,15 @@
 #include "../../include/serveur/my.h"
 
 // ------------------- REMOVE CLIENT -------------------
-static void free_player(struct players *players, int index)
+static void free_player(struct players *player, int ind, server_config_t *conf)
 {
-    if (players->players[index].team_name)
-        free(players->players[index].team_name);
+    int pos_team = 0;
+
+    if (player->player[ind].team_name) {
+        find_index_team(conf, player->player[ind].team_name);
+        conf->teams_count_connect[pos_team]--;
+        free(player->player[ind].team_name);
+    }
 }
 
 static int do_proper_logout(int fd, int index, client_list_t *cli_list)
@@ -33,7 +38,7 @@ static int do_proper_logout(int fd, int index, client_list_t *cli_list)
     return 1;
 }
 
-int remove_client(server_t *serv, int index)
+int remove_client(server_t *serv, int index, server_config_t *config)
 {
     struct players *players = serv->players;
     int fd = serv->client_list.clients[index].fd;
@@ -41,7 +46,7 @@ int remove_client(server_t *serv, int index)
 
     if (player_index == -1)
         return do_proper_logout(fd, index, &serv->client_list);
-    free_player(players, player_index);
+    free_player(players, player_index, config);
     for (size_t j = player_index; j < players->nplayers - 1; j++)
         players->players[j] = players->players[j + 1];
     players->nplayers--;

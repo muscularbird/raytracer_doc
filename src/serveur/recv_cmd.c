@@ -23,7 +23,7 @@ static void dispatch_command(server_t *serveur, int ind, const char *cmd,
     if (serveur->players->players[ind].nb_bad_cmd >= 10) {
         fprintf(stderr, "Client %d send to many bad request\n",
             serveur->players->players[ind].fd);
-        remove_client(serveur, ind);
+        remove_client(serveur, ind, config);
     } else
         fprintf(stderr, "Bad command from client %d: %s\n",
             serveur->players->players[ind].fd, cmd);
@@ -34,7 +34,7 @@ int find_team(char **cmd, server_t *serv, server_config_t *config, int index)
     if (!serv->players->players[index].is_loged) {
         if (validate_log_info(*cmd, serv, config, index)) {
             free(*cmd);
-            remove_client(serv, index);
+            remove_client(serv, index, config);
             return 1;
         } else
             serv->players->players[index].team_name = strdup(*cmd);
@@ -60,19 +60,19 @@ void see_cmd(server_t *serveur, int index, server_config_t *config)
         if (serveur->players->players[index].req_without_answer >= 10) {
             fprintf(stderr, "Client %d send to many request without answer\n",
                 serveur->players->players[index].fd);
-            remove_client(serveur, index);
+            remove_client(serveur, index, config);
         }
         return;
     }
 }
 
-void recv_from_cli(server_t *serveur, int index)
+void recv_from_cli(server_t *serveur, int index, server_config_t *config)
 {
     char buf[BUFFER_SIZE] = {0};
     int bytes_read = recv(serveur->client_list.clients[index].fd, buf,
         sizeof(buf) - 1, 0);
 
-    if (bytes_read <= 0 && remove_client(serveur, index))
+    if (bytes_read <= 0 && remove_client(serveur, index, config))
         return;
     buf[bytes_read] = '\0';
     strncat(serveur->players->players[index].buff, buf,

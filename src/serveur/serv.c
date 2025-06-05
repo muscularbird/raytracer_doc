@@ -51,7 +51,7 @@ static void dispatch(server_t *serveur, int i, server_config_t *config)
         if (cli_list->clients[i].fd == serveur->server_fd)
             send_log_info(serveur);
         else
-            recv_from_cli(serveur, i);
+            recv_from_cli(serveur, i, config);
     }
     if (strlen(serveur->players->players[i].buff) > 0 && time(NULL) >=
     serveur->players->players[i].next_action)

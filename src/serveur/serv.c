@@ -70,21 +70,55 @@ static void server_shutdown(client_list_t *cli_list, server_t *serveur)
     free(cli_list->clients);
 }
 
+static int compute_timeout(server_t *serveur)
+{
+    int timeout = -1;
+    int diff = 0;
+    time_t now = time(NULL);
+    time_t next = 0;
+
+    for (size_t i = 0; i < serveur->players->nplayers; i++) {
+        if (strlen(serveur->players->players[i].buff) > 0) {
+            next = serveur->players->players[i].next_action;
+            diff = (int)(next - now) * 1000;
+            diff = (diff < 0) ? 0 : diff;
+            timeout = (timeout == -1 || diff < timeout) ? diff : timeout;
+        }
+    }
+    return timeout;
+}
+
+static void process_players_actions(server_t *serveur, server_config_t *config)
+{
+    time_t now = time(NULL);
+
+    for (size_t i = 0; i < serveur->players->nplayers; i++) {
+        if (strlen(serveur->players->players[i].buff) > 0 &&
+            now >= serveur->players->players[i].next_action) {
+            see_cmd(serveur, i, config);
+        }
+    }
+}
+
 static int run_serv(server_t *serveur, server_config_t *config)
 {
     client_list_t *cli_list = &serveur->client_list;
+    int poll_ret = 0;
+    int timeout = 0;
 
     serveur->players = calloc(sizeof(players_t), 1);
     add_client(serveur, serveur->server_fd, config);
     signal(SIGINT, sighandler);
     while (*get_ptr_serv()) {
-        if (poll(cli_list->clients, cli_list->count, 0) < 0
-            && errno != EINTR) {
+        timeout = compute_timeout(serveur);
+        poll_ret = poll(cli_list->clients, cli_list->count, timeout);
+        if (poll_ret < 0 && errno != EINTR) {
             free(cli_list->clients);
             return 1 + 0 * fprintf(stderr, "Error poll\n");
         }
         for (int i = 0; i < cli_list->count; i++)
             dispatch(serveur, i, config);
+        process_players_actions(serveur, config);
     }
     server_shutdown(cli_list, serveur);
     return 0;
@@ -104,3 +138,64 @@ int start_server(server_config_t *config)
     free(server.map);
     return 0;
 }
+
+// -------------- new version but doesn't respect the coding style ------------
+// static int run_serv(server_t *serveur, server_config_t *config)
+// {
+//     client_list_t *cli_list = &serveur->client_list;
+
+//     serveur->players = calloc(sizeof(players_t), 1);
+//     add_client(serveur, serveur->server_fd, config);
+//     signal(SIGINT, sighandler);
+//     while (*get_ptr_serv()) {
+//         int timeout = -1;
+//         time_t now = time(NULL);
+//         for (size_t i = 0; i < serveur->players->nplayers; i++) {
+//             if (strlen(serveur->players->players[i].buff) > 0) {
+//                 time_t next = serveur->players->players[i].next_action;
+//                 int diff = (int)(next - now) * 1000;
+//                 if (diff < 0)
+//                     diff = 0;
+//                 if (timeout == -1 || diff < timeout)
+//                     timeout = diff;
+//             }
+//         }
+//         int poll_ret = poll(cli_list->clients, cli_list->count, timeout);
+//         if (poll_ret < 0 && errno != EINTR) {
+//             free(cli_list->clients);
+//             return 1 + 0 * fprintf(stderr, "Error poll\n");
+//         }
+//         for (int i = 0; i < cli_list->count; i++)
+//             dispatch(serveur, i, config);
+//         now = time(NULL);
+//         for (size_t i = 0; i < serveur->players->nplayers; i++) {
+//             if (strlen(serveur->players->players[i].buff) > 0 &&
+//                 now >= serveur->players->players[i].next_action) {
+//                 see_cmd(serveur, i, config);
+//             }
+//         }
+//     }
+//     server_shutdown(cli_list, serveur);
+//     return 0;
+// }
+
+// -------------- legacy code ------------
+// static int run_serv(server_t *serveur, server_config_t *config)
+// {
+//     client_list_t *cli_list = &serveur->client_list;
+
+//     serveur->players = calloc(sizeof(players_t), 1);
+//     add_client(serveur, serveur->server_fd, config);
+//     signal(SIGINT, sighandler);
+//     while (*get_ptr_serv()) {
+//         if (poll(cli_list->clients, cli_list->count, 0) < 0
+//             && errno != EINTR) {
+//             free(cli_list->clients);
+//             return 1 + 0 * fprintf(stderr, "Error poll\n");
+//         }
+//         for (int i = 0; i < cli_list->count; i++)
+//             dispatch(serveur, i, config);
+//     }
+//     server_shutdown(cli_list, serveur);
+//     return 0;
+// }

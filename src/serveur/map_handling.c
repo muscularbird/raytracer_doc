@@ -104,6 +104,7 @@ int generate_map(server_t *serv, server_config_t *config)
         }
     }
     dispatch_objects(serv, config);
-    print_map(serv, config);
+    if (config->debug)
+        print_map(serv, config);
     return EXIT_SUCCESS;
 }

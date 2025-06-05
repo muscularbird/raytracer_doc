@@ -3,14 +3,14 @@ set(SOURCES
         src/main.cpp
         src/core/Game.cpp
         src/graphics/SquareComponent.cpp
-        src/logs/Logger.cpp
+        src/logger/Logger.cpp
 )
 
 set(HEADERS
         include/include.hpp
         include/core/Game.hpp
         include/graphics/SquareComponent.hpp
-        include/logs/Logger.hpp
+        include/logger/Logger.hpp
 )
 
 # Define the executable

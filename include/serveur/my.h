@@ -80,14 +80,22 @@ enum obj_type {
 typedef struct tile_s {
     int x;
     int y;
-    int food;
-    int linemate;
-    int deraumere;
-    int sibur;
-    int mendiane;
-    int phiras;
-    int thystame;
+    int *ressources;
+    // int food;
+    // int linemate;
+    // int deraumere;
+    // int sibur;
+    // int mendiane;
+    // int phiras;
+    // int thystame;
 } tile_t;
+
+enum direction {
+    UP,
+    DOWN,
+    RIGHT,
+    LEFT
+};
 
 typedef struct player_s {
     struct {

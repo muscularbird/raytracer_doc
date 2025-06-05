@@ -31,20 +31,7 @@ static double find_density(enum obj_type type)
 
 static void place_correct_obj(server_t *serv, int obj, int x, int y)
 {
-    if (obj == FOOD)
-        serv->map[y][x].food++;
-    if (obj == LINEMATE)
-        serv->map[y][x].linemate++;
-    if (obj == DERAUMERE)
-        serv->map[y][x].deraumere++;
-    if (obj == SIBUR)
-        serv->map[y][x].sibur++;
-    if (obj == MENDIANE)
-        serv->map[y][x].mendiane++;
-    if (obj == PHIRAS)
-        serv->map[y][x].phiras++;
-    if (obj == THYSTAME)
-        serv->map[y][x].thystame++;
+    serv->map[y][x].ressources[obj]++;
 }
 
 static void place_objects(int obj, server_t *serv,
@@ -79,12 +66,10 @@ void print_map(server_t *serv, server_config_t *config)
     for (int i = 0; i < config->height; i++) {
         for (int j = 0; j < config->width; j++) {
             printf("Initializing tile at (%d, %d)\n", j, i);
-            printf("Tile content: food=%d, linemate=%d, deraumere=%d, "
-                "sibur=%d, mendiane=%d, phiras=%d, thystame=%d\n",
-                serv->map[i][j].food, serv->map[i][j].linemate,
-                serv->map[i][j].deraumere, serv->map[i][j].sibur,
-                serv->map[i][j].mendiane, serv->map[i][j].phiras,
-                serv->map[i][j].thystame);
+            for (int k = 0; k < LAST_OBJECT; k++) {
+                printf("Tile (%d, %d) has %d of type %d\n",
+                    j, i, serv->map[i][j].ressources[k], k);
+            }
         }
     }
 }
@@ -92,15 +77,18 @@ void print_map(server_t *serv, server_config_t *config)
 int generate_map(server_t *serv, server_config_t *config)
 {
     serv->map = calloc(sizeof(tile_t *), config->height + 1);
-    if (!serv->map) {
-        perror("Memory allocation failed for map rows");
+    if (!serv->map)
         return EXIT_FAIL;
-    }
     for (int i = 0; i < config->height; i++) {
         serv->map[i] = calloc(sizeof(tile_t), config->width + 1);
-        if (!serv->map[i]) {
-            perror("Memory allocation failed for map columns");
+        if (!serv->map[i])
             return EXIT_FAIL;
+    }
+    for (int i = 0; i < config->height; i++) {
+        for (int j = 0; j < config->width; j++) {
+            serv->map[i][j].ressources = calloc(sizeof(int), LAST_OBJECT);
+            if (!serv->map[i][j].ressources)
+                return EXIT_FAIL;
         }
     }
     dispatch_objects(serv, config);

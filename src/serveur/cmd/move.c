@@ -13,6 +13,20 @@ void cmd_forward(server_t *serveur, int index, const char *cmd,
 {
     (void)cmd;
     (void)config;
+    switch (serveur->players->players[index].direction) {
+        case UP:
+            serveur->players->players[index].y--;
+            break;
+        case DOWN:
+            serveur->players->players[index].y++;
+            break;
+        case RIGHT:
+            serveur->players->players[index].x++;
+            break;
+        case LEFT:
+            serveur->players->players[index].x--;
+            break;
+    }
     send(serveur->client_list.clients[index].fd, OK_CMD, 3, MSG_NOSIGNAL);
 }
 

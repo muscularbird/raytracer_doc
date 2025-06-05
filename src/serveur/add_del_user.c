@@ -12,10 +12,10 @@ static void free_player(struct players *player, int ind, server_config_t *conf)
 {
     int pos_team = 0;
 
-    if (player->player[ind].team_name) {
-        find_index_team(conf, player->player[ind].team_name);
+    if (player->players[ind].team_name) {
+        find_index_team(conf, player->players[ind].team_name);
         conf->teams_count_connect[pos_team]--;
-        free(player->player[ind].team_name);
+        free(player->players[ind].team_name);
     }
 }
 

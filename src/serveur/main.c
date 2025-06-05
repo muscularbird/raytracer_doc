@@ -35,7 +35,7 @@ static bool init_config_end(server_config_t *config)
     config->teams_count_max = calloc(3, sizeof(int));
     config->teams_count_connect = calloc(3, sizeof(int));
     if (!config->teams_count_max || !config->teams_count_connect) {
-        perror("Failed to allocate memory for team_count");
+        write_log(config, "Memory allocation failed for team_count", true);
         return 1;
     }
     config->client_nb = 2;
@@ -56,7 +56,7 @@ static bool init_config(server_config_t *config)
     config->debug = true;
     config->teams = calloc(4, sizeof(char *));
     if (!config->teams) {
-        perror("Failed to allocate memory for teams");
+        write_log(config, "Memory allocation failed for teams", true);
         return 1;
     }
     config->teams[0] = strdup("Epitech");
@@ -81,18 +81,18 @@ bool fill_struct(server_config_t *config, char **av)
 
 static void print_parsing(server_config_t *config)
 {
-    printf("Port: %d\n", config->port);
-    printf("Width: %d\n", config->width);
-    printf("Height: %d\n", config->height);
-    printf("Client Number: %d\n", config->client_nb);
-    printf("Frequency: %d\n", config->freq);
-    if (config->teams) {
-        printf("Teams:\n");
-        for (int i = 0; config->teams[i]; i++) {
-            printf("  - %s\n", config->teams[i]);
-        }
-    } else {
-        printf("No teams defined.\n");
+    char buffer[BUFFER_SIZE] = {0};
+
+    snprintf(buffer, sizeof(buffer), "Port: %d, Width: %d, Height: %d, "
+        "Client Number: %d, Frequency: %d", config->port, config->width,
+        config->height, config->client_nb, config->freq);
+    write_log(config, "Configuration details:", false);
+    write_log(config, buffer, false);
+    write_log(config, "Teams:", false);
+    for (int i = 0; config->teams[i]; i++) {
+        memset(buffer, 0, sizeof(buffer));
+        snprintf(buffer, sizeof(buffer), "   - %s", config->teams[i]);
+        write_log(config, buffer, false);
     }
 }
 
@@ -100,6 +100,8 @@ int main(int ac, char **av)
 {
     server_config_t config = {0};
 
+    if (open_log_file(&config))
+        return EXIT_FAIL;
     if (ac < 2 || strcmp(av[1], "--help") == 0) {
         usage();
         return EXIT_FAIL;
@@ -112,5 +114,6 @@ int main(int ac, char **av)
         print_parsing(&config);
     start_server(&config);
     free_data(&config);
+    close_log_file(&config);
     return EXIT_SUCCESS;
 }

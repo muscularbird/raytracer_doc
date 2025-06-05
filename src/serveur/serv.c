@@ -114,7 +114,7 @@ static int run_serv(server_t *serveur, server_config_t *config)
         poll_ret = poll(cli_list->clients, cli_list->count, timeout);
         if (poll_ret < 0 && errno != EINTR) {
             free(cli_list->clients);
-            return 1 + 0 * fprintf(stderr, "Error poll\n");
+            return 1 + 0 * write_log(config, "Error poll", true);
         }
         for (int i = 0; i < cli_list->count; i++)
             dispatch(serveur, i, config);

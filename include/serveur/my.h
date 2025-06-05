@@ -49,6 +49,7 @@ typedef struct server_config_s {
     int client_nb;
     int freq;
     bool debug;
+    FILE *log_file;
 } server_config_t;
 
 typedef struct inventory_s {
@@ -81,13 +82,6 @@ typedef struct tile_s {
     int x;
     int y;
     int *ressources;
-    // int food;
-    // int linemate;
-    // int deraumere;
-    // int sibur;
-    // int mendiane;
-    // int phiras;
-    // int thystame;
 } tile_t;
 
 enum direction {
@@ -127,8 +121,6 @@ typedef struct server_s {
     players_t *players;
     tile_t **map;
     float *map_density;
-    int map_width;
-    int map_height;
     client_list_t client_list;
 } server_t;
 
@@ -185,6 +177,10 @@ bool check_food_death(server_t *serveur, int i);
 void see_cmd(server_t *serveur, int index, server_config_t *config);
 // map handling
 int generate_map(server_t *serv, server_config_t *config);
+
+bool open_log_file(server_config_t *config);
+int write_log(server_config_t *config, const char *message, bool error);
+void close_log_file(server_config_t *config);
 
 
 #endif /* !MY_H_ */

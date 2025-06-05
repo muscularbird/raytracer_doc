@@ -97,7 +97,10 @@ int start_server(server_config_t *config)
     server.server_fd = init_server(config->port);
     if (server.server_fd < 0)
         return 1;
-    generate_map(&server);
+    generate_map(&server, config);
     run_serv(&server, config);
+    for (int i = 0; i < config->height; i++)
+        free(server.map[i]);
+    free(server.map);
     return 0;
 }

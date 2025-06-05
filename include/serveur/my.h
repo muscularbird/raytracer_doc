@@ -80,7 +80,13 @@ enum obj_type {
 typedef struct tile_s {
     int x;
     int y;
-    enum obj_type* obj;
+    int food;
+    int linemate;
+    int deraumere;
+    int sibur;
+    int mendiane;
+    int phiras;
+    int thystame;
 } tile_t;
 
 typedef struct player_s {
@@ -170,7 +176,7 @@ int validate_log_info(const char *buf, server_t *serv,
 bool check_food_death(server_t *serveur, int i);
 void see_cmd(server_t *serveur, int index, server_config_t *config);
 // map handling
-int generate_map(server_t *serv);
+int generate_map(server_t *serv, server_config_t *config);
 
 
 #endif /* !MY_H_ */

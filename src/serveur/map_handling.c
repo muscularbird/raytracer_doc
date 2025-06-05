@@ -7,58 +7,103 @@
 
 #include "../../include/serveur/my.h"
 
-int second_for(enum obj_type i, server_t *serv, int object_count)
+static double find_density(enum obj_type type)
 {
-    int rand_width = 0;
-    int rand_height = 0;
-    tile_t *tile;
-
-    for (int j = 0; j < object_count; j++) {
-        rand_width = rand() % serv->map_width;
-        rand_height = rand() % serv->map_height;
-        tile = &serv->map[rand_height][rand_width];
-        tile->obj = realloc(tile->obj, sizeof(enum obj_type) * (j + 1));
-        if (!tile->obj) {
-            perror("Memory allocation failed for tile objects");
-            return EXIT_FAIL;
-        }
-        tile->obj[j] = i;
+    switch (type) {
+        case FOOD:
+            return FOOD_DENSITY;
+        case LINEMATE:
+            return LINEMATE_DENSITY;
+        case DERAUMERE:
+            return DERAUMERE_DENSITY;
+        case SIBUR:
+            return SIBUR_DENSITY;
+        case MENDIANE:
+            return MENDIANE_DENSITY;
+        case PHIRAS:
+            return PHIRAS_DENSITY;
+        case THYSTAME:
+            return THYSTAME_DENSITY;
+        default:
+            return 0.0f;
     }
-    return EXIT_SUCCESS;
 }
 
-int dispatch_objects(server_t *serv)
+static void place_correct_obj(server_t *serv, int obj, int x, int y)
 {
-    int object_count;
+    if (obj == FOOD)
+        serv->map[y][x].food++;
+    if (obj == LINEMATE)
+        serv->map[y][x].linemate++;
+    if (obj == DERAUMERE)
+        serv->map[y][x].deraumere++;
+    if (obj == SIBUR)
+        serv->map[y][x].sibur++;
+    if (obj == MENDIANE)
+        serv->map[y][x].mendiane++;
+    if (obj == PHIRAS)
+        serv->map[y][x].phiras++;
+    if (obj == THYSTAME)
+        serv->map[y][x].thystame++;
+}
+
+static void place_objects(int obj, server_t *serv,
+    server_config_t *config, int nb_objects)
+{
+    int x = 0;
+    int y = 0;
+
+    for (int i = 0; i < nb_objects; i++) {
+        x = rand() % config->width;
+        y = rand() % config->height;
+        place_correct_obj(serv, obj, x, y);
+    }
+}
+
+void dispatch_objects(server_t *serv, server_config_t *config)
+{
+    int nb_objects = 0;
+    double multiplicator = 0;
 
     srand(time(NULL));
-    for (enum obj_type i = 0; i < LAST_OBJECT; i++) {
-        object_count = (serv->map_density[i] * serv->map_width *
-            serv->map_height);
-        second_for(i, serv, object_count);
+    for (enum obj_type obj = 0; obj < LAST_OBJECT; obj++) {
+        multiplicator = find_density(obj);
+        nb_objects = config->width * config->height * multiplicator;
+        place_objects(obj, serv, config, nb_objects);
     }
-    return 0;
 }
 
-int generate_map(server_t *serv)
+void print_map(server_t *serv, server_config_t *config)
 {
-    serv->map_density = (float[]){0.5, 0.3, 0.15, 0.1, 0.05, 0.05, 0.01};
-    serv->map = malloc(sizeof(tile_t *) * serv->map_height);
-    for (int i = 0; i < serv->map_height; i++) {
-        serv->map[i] = malloc(sizeof(tile_t) * serv->map_width);
-        if (!serv->map[i])
-            return EXIT_FAIL;
-    }
-    if (!serv->map)
-        return EXIT_FAIL;
-    for (int i = 0; i < serv->map_height; i++) {
-        for (int j = 0; j < serv->map_width; j++) {
-            serv->map[i * serv->map_height][j].x = j;
-            serv->map[i * serv->map_height][j].y = i;
-            serv->map[i * serv->map_height][j].obj =
-            malloc(sizeof(enum obj_type) * 1);
+    printf("Map (%d x %d):\n", config->width, config->height);
+    for (int i = 0; i < config->height; i++) {
+        for (int j = 0; j < config->width; j++) {
+            printf("Initializing tile at (%d, %d)\n", j, i);
+            printf("Tile content: food=%d, linemate=%d, deraumere=%d, "
+                "sibur=%d, mendiane=%d, phiras=%d, thystame=%d\n",
+                serv->map[i][j].food, serv->map[i][j].linemate,
+                serv->map[i][j].deraumere, serv->map[i][j].sibur,
+                serv->map[i][j].mendiane, serv->map[i][j].phiras,
+                serv->map[i][j].thystame);
         }
     }
-    dispatch_objects(serv);
+}
+
+int generate_map(server_t *serv, server_config_t *config)
+{
+    serv->map = calloc(sizeof(tile_t *), config->height + 1);
+    if (!serv->map) {
+        perror("Memory allocation failed for map rows");
+        return EXIT_FAIL;
+    }
+    for (int i = 0; i < config->height; i++) {
+        serv->map[i] = calloc(sizeof(tile_t), config->width + 1);
+        if (!serv->map[i]) {
+            perror("Memory allocation failed for map columns");
+            return EXIT_FAIL;
+        }
+    }
+    dispatch_objects(serv, config);
+    print_map(serv, config);
     return EXIT_SUCCESS;
 }

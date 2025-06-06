@@ -46,15 +46,19 @@ static void sighandler(int sig)
 static void dispatch(server_t *serveur, int i, server_config_t *config)
 {
     client_list_t *cli_list = &serveur->client_list;
+    players_t *players = serveur->players;
 
+    if (cli_list->count == 0 || !cli_list->clients)
+        return;
     if (cli_list->clients[i].revents & POLLIN) {
         if (cli_list->clients[i].fd == serveur->server_fd)
             send_log_info(serveur, config);
         else
             recv_from_cli(serveur, i, config);
     }
-    if (strlen(serveur->players->players[i].buff) > 0 && time(NULL) >=
-    serveur->players->players[i].next_action)
+    if (players->nplayers > 0 && i < (int)players->nplayers &&
+        strlen(players->players[i].buff) > 0 &&
+        time(NULL) >= players->players[i].next_action)
         see_cmd(serveur, i, config);
 }
 
@@ -114,9 +118,9 @@ static int run_serv(server_t *serveur, server_config_t *config)
         poll_ret = poll(cli_list->clients, cli_list->count, timeout);
         if (poll_ret < 0 && errno != EINTR) {
             free(cli_list->clients);
-            return 1 + 0 * write_log(config, "Error poll", true);
+            return 1 + 0 * write_log(config->log_file, "Error poll", true);
         }
-        for (int i = 0; i < cli_list->count; i++)
+        for (int i = cli_list->count - 1; i >= 0; i--)
             dispatch(serveur, i, config);
         process_players_actions(serveur, config);
     }
@@ -128,6 +132,7 @@ int start_server(server_config_t *config)
 {
     server_t server = {0};
 
+    server.log_file = config->log_file;
     server.server_fd = init_server(config->port);
     if (server.server_fd < 0)
         return 1;

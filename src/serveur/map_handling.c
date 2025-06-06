@@ -62,18 +62,24 @@ void dispatch_objects(server_t *serv, server_config_t *config)
 
 static void display_item_of_tile(server_t *serv, int i, int j)
 {
-    for (int k = 0; k < LAST_OBJECT; k++) {
-        printf("Tile (%d, %d) has %d of type %d\n",
-            j, i, serv->map[i][j].ressources[k], k);
-    }
+    char buffer[BUFFER_SIZE] = {0};
+
+    snprintf(buffer, BUFFER_SIZE, "Tile (%d, %d) has [%d, "
+    "%d, %d, %d, %d, %d, %d]", j, i, serv->map[i][j].ressources[0],
+    serv->map[i][j].ressources[1], serv->map[i][j].ressources[2],
+    serv->map[i][j].ressources[3], serv->map[i][j].ressources[4],
+    serv->map[i][j].ressources[5], serv->map[i][j].ressources[6]);
+    write_log(serv->log_file, buffer, false);
 }
 
-void print_map(server_t *serv, server_config_t *config)
+void print_map(server_t *serv, server_config_t *conf)
 {
-    printf("Map (%d x %d):\n", config->width, config->height);
-    for (int i = 0; i < config->height; i++) {
-        for (int j = 0; j < config->width; j++) {
-            printf("Initializing tile at (%d, %d)\n", j, i);
+    char buff[BUFFER_SIZE] = {0};
+
+    snprintf(buff, BUFFER_SIZE, "Map (%d x %d):", conf->width, conf->height);
+    write_log(conf->log_file, buff, false);
+    for (int i = 0; i < conf->height; i++) {
+        for (int j = 0; j < conf->width; j++) {
             display_item_of_tile(serv, i, j);
         }
     }

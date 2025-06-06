@@ -118,6 +118,6 @@ bool parsing(char **av, server_config_t *config)
     }
     if (end_init_value(config))
         return true;
-    write_log(config, "Parsing completed successfully", false);
+    write_log(config->log_file, "Parsing completed successfully", false);
     return false;
 }

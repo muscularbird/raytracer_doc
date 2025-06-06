@@ -13,6 +13,8 @@ void cmd_look(server_t *serveur, int index, const char *cmd,
 {
     (void)cmd;
     (void)config;
-    printf("Look command received from client %d\n",
-        serveur->client_list.clients[index].fd);
+    printf("Look : position of client %d: (%d, %d)\n",
+        serveur->client_list.clients[index].fd,
+        serveur->players->players[index].x,
+        serveur->players->players[index].y);
 }

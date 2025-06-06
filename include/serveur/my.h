@@ -122,6 +122,7 @@ typedef struct server_s {
     tile_t **map;
     float *map_density;
     client_list_t client_list;
+    FILE *log_file;
 } server_t;
 
 typedef void (*command_func_t)(server_t *, int, const char *,
@@ -179,7 +180,7 @@ void see_cmd(server_t *serveur, int index, server_config_t *config);
 int generate_map(server_t *serv, server_config_t *config);
 
 bool open_log_file(server_config_t *config);
-int write_log(server_config_t *config, const char *message, bool error);
+int write_log(FILE *config, const char *message, bool error);
 void close_log_file(server_config_t *config);
 
 

@@ -35,7 +35,8 @@ static bool init_config_end(server_config_t *config)
     config->teams_count_max = calloc(3, sizeof(int));
     config->teams_count_connect = calloc(3, sizeof(int));
     if (!config->teams_count_max || !config->teams_count_connect) {
-        write_log(config, "Memory allocation failed for team_count", true);
+        write_log(config->log_file, "Memory allocation failed for team_count",
+            true);
         return 1;
     }
     config->client_nb = 2;
@@ -48,21 +49,21 @@ static bool init_config_end(server_config_t *config)
     return 0;
 }
 
-static bool init_config(server_config_t *config)
+static bool init_config(server_config_t *conf)
 {
-    config->port = 4242;
-    config->width = 10;
-    config->height = 10;
-    config->debug = true;
-    config->teams = calloc(4, sizeof(char *));
-    if (!config->teams) {
-        write_log(config, "Memory allocation failed for teams", true);
+    conf->port = 4242;
+    conf->width = 10;
+    conf->height = 10;
+    conf->debug = true;
+    conf->teams = calloc(4, sizeof(char *));
+    if (!conf->teams) {
+        write_log(conf->log_file, "Memory allocation failed for teams", true);
         return 1;
     }
-    config->teams[0] = strdup("Epitech");
-    config->teams[1] = strdup("Nancy");
-    config->teams[2] = strdup("GRAPHIC");
-    if (init_config_end(config))
+    conf->teams[0] = strdup("Epitech");
+    conf->teams[1] = strdup("Nancy");
+    conf->teams[2] = strdup("GRAPHIC");
+    if (init_config_end(conf))
         return 1;
     return 0;
 }
@@ -86,13 +87,13 @@ static void print_parsing(server_config_t *config)
     snprintf(buffer, sizeof(buffer), "Port: %d, Width: %d, Height: %d, "
         "Client Number: %d, Frequency: %d", config->port, config->width,
         config->height, config->client_nb, config->freq);
-    write_log(config, "Configuration details:", false);
-    write_log(config, buffer, false);
-    write_log(config, "Teams:", false);
+    write_log(config->log_file, "Configuration details:", false);
+    write_log(config->log_file, buffer, false);
+    write_log(config->log_file, "Teams:", false);
     for (int i = 0; config->teams[i]; i++) {
         memset(buffer, 0, sizeof(buffer));
         snprintf(buffer, sizeof(buffer), "   - %s", config->teams[i]);
-        write_log(config, buffer, false);
+        write_log(config->log_file, buffer, false);
     }
 }
 

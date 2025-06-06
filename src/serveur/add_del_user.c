@@ -137,10 +137,8 @@ int add_client(server_t *serv, int client_fd, server_config_t *config)
     cli_list->clients[cli_list->count].revents = 0;
     cli_list->count++;
     create_player(serv->players, client_fd, config);
-    if (client_fd != 3) {
-        if (config->debug)
-            print_player(&serv->players->players[serv->players->nplayers - 1]);
-        printf("230 -> User %d connected\n", client_fd);
-    }
+    if (config->debug)
+        print_player(&serv->players->players[serv->players->nplayers - 1]);
+    printf("230 -> User %d connected\n", client_fd);
     return 0;
 }

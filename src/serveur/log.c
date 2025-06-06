@@ -11,7 +11,7 @@
 bool open_log_file(server_config_t *config)
 {
     const char *log_dir = "./logs";
-    const char *log_path = "./logs/raytracer.log";
+    const char *log_path = "./logs/zappy_serv.log";
     struct stat st = {0};
 
     if (stat(log_dir, &st) == -1) {
@@ -28,7 +28,7 @@ bool open_log_file(server_config_t *config)
     return false;
 }
 
-int write_log(server_config_t *config, const char *message, bool error)
+int write_log(FILE *log_file, const char *message, bool error)
 {
     time_t now = time(NULL);
     struct tm *tm_info = localtime(&now);
@@ -38,10 +38,10 @@ int write_log(server_config_t *config, const char *message, bool error)
         return 0;
     strftime(date_str, sizeof(date_str), "[%Y-%m-%d %H:%M:%S]", tm_info);
     if (error)
-        fprintf(config->log_file, "%s [ERROR] %s\n", date_str, message);
+        fprintf(log_file, "%s [ERROR] %s\n", date_str, message);
     else
-        fprintf(config->log_file, "%s [INFO] %s\n", date_str, message);
-    fflush(config->log_file);
+        fprintf(log_file, "%s [INFO] %s\n", date_str, message);
+    fflush(log_file);
     return 0;
 }
 

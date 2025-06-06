@@ -66,8 +66,8 @@ int remove_client(server_t *serv, int index, server_config_t *config)
 static void init_player(player_t *__players, int index, int id, int fd)
 {
     __players[index] = (player_t) {
-        .x = 0,
-        .y = 0,
+        .x = -1,
+        .y = -1,
         .direction = 'N',
         .id = id,
         .fd = fd,
@@ -79,7 +79,7 @@ static void init_player(player_t *__players, int index, int id, int fd)
     };
 }
 
-static void init_pos_player(player_t *players, int ind,
+void init_pos_player(player_t *players, int ind,
     server_config_t *conf)
 {
     char directions[] = {'N', 'S', 'E', 'W'};
@@ -96,6 +96,7 @@ static bool create_player(players_t *players, int fd,
     static unsigned short id = 1;
     player_t *__players;
 
+    (void)conf;
     __players = realloc(players->players,
         sizeof(player_t) * (players->nplayers + 1));
     if (__players == NULL)
@@ -103,25 +104,29 @@ static bool create_player(players_t *players, int fd,
     players->players = __players;
     init_player(players->players, players->nplayers, id, fd);
     players->nplayers++;
-    init_pos_player(players->players, players->nplayers - 1, conf);
     id++;
     return true;
 }
 
-void print_player(const player_t *p)
+void print_player(const player_t *p, server_t *serv)
 {
-    printf("Player {\n");
-    printf("  id: %d\n", p->id);
-    printf("  fd: %d\n", p->fd);
-    printf("  x: %d\n", p->x);
-    printf("  y: %d\n", p->y);
-    printf("  direction: %c\n", p->direction);
-    printf("  team_name: %s\n", p->team_name ? p->team_name : "NULL");
-    printf("  is_loged: %s\n", p->is_loged ? "true" : "false");
-    printf("  inventory.food: %d\n", p->inventory.food);
-    printf("  next_action: %ld\n", (long)p->next_action);
-    printf("  buff: \"%s\"\n", p->buff);
-    printf("}\n");
+    char *buff = calloc(BUFFER_SIZE + 1, sizeof(char));
+    const char *team_name_safe = (p->team_name && strlen(p->team_name) <= 100)
+    ? p->team_name : "TOO_LONG_OR_NULL";
+    char buff_safe[101] = {0};
+
+    if (!buff)
+        return;
+    strncpy(buff_safe, (strlen(p->buff) <= 100) ? p->buff : "TOO_LONG", 100);
+    snprintf(buff, BUFFER_SIZE,
+        "Player {\n  id: %d\n  fd: %d\n  x: %d\n  y: %d\n"
+        "  direction: %c\n  team_name: %s\n  is_loged: %s\n"
+        "  next_action: %ld\n  buff: \"%s\"\n}\n",
+        p->id, p->fd, p->x, p->y, p->direction, team_name_safe,
+        p->is_loged ? "true" : "false", (long)p->next_action, buff_safe
+    );
+    write_log(serv->log_file, buff, 0);
+    free(buff);
 }
 
 int add_client(server_t *serv, int client_fd, server_config_t *config)
@@ -138,7 +143,8 @@ int add_client(server_t *serv, int client_fd, server_config_t *config)
     cli_list->count++;
     create_player(serv->players, client_fd, config);
     if (config->debug)
-        print_player(&serv->players->players[serv->players->nplayers - 1]);
+        print_player(&serv->players->players[serv->players->nplayers - 1],
+            serv);
     printf("230 -> User %d connected\n", client_fd);
     return 0;
 }

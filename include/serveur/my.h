@@ -183,5 +183,7 @@ bool open_log_file(server_config_t *config);
 int write_log(FILE *config, const char *message, bool error);
 void close_log_file(server_config_t *config);
 
+void init_pos_player(player_t *players, int ind,
+    server_config_t *conf);
 
 #endif /* !MY_H_ */
